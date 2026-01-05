@@ -1,0 +1,88 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+
+// model User {
+//   id    Int     @id @default(autoincrement())
+//   email String  @unique
+//   name  String?
+//   posts Post[]
+// }
+
+// model Post {
+//   id        Int      @id @default(autoincrement())
+//   createdAt DateTime @default(now())
+//   updatedAt DateTime @updatedAt
+//   title     String
+//   content   String?
+//   published Boolean  @default(false)
+//   viewCount Int      @default(0)
+//   author    User?    @relation(fields: [authorId], references: [id])
+//   authorId  Int?
+// }
+
+model Admin {
+  id         Int     @id @default(autoincrement())
+  name_admin String
+  email      String  @unique
+  password   String
+  token      String?
+
+  @@map("admins")
+}
+
+model Category {
+  id            Int       @id @default(autoincrement())
+  name_category String
+  job_type      String
+  careers       Careers[]
+
+  @@map("categories")
+}
+
+model Careers {
+  id         Int       @id @default(autoincrement())
+  job_name   String
+  job_date   DateTime  @default(now())
+  categoryId Int?
+  category   Category? @relation(fields: [categoryId], references: [id])
+
+  @@map("careers")
+}
+
+model Applys {
+  id         Int    @id @default(autoincrement())
+  name_apply String
+  email      String @unique
+  no_hp      String
+  gender     String
+  domicile   String
+  resume     String
+
+  @@map("applys")
+}
+
+model Contacts {
+  id                 Int    @id @default(autoincrement())
+  branch             String
+  branch_per_country String
+  country            String
+  email              String @unique
+  no_hp              String
+  address            String
+  website            String
+
+  @@map("contacts")
+}
