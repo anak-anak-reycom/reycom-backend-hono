@@ -55,7 +55,8 @@ export const ModelName = {
   Category: 'Category',
   Careers: 'Careers',
   Applys: 'Applys',
-  Contacts: 'Contacts'
+  Contacts: 'Contacts',
+  Videos: 'Videos'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -129,6 +130,15 @@ export const ContactsScalarFieldEnum = {
 } as const
 
 export type ContactsScalarFieldEnum = (typeof ContactsScalarFieldEnum)[keyof typeof ContactsScalarFieldEnum]
+
+
+export const VideosScalarFieldEnum = {
+  id: 'id',
+  title_video: 'title_video',
+  link_video: 'link_video'
+} as const
+
+export type VideosScalarFieldEnum = (typeof VideosScalarFieldEnum)[keyof typeof VideosScalarFieldEnum]
 
 
 export const SortOrder = {

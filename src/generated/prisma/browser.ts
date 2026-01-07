@@ -42,3 +42,8 @@ export type Applys = Prisma.ApplysModel
  * 
  */
 export type Contacts = Prisma.ContactsModel
+/**
+ * Model Videos
+ * 
+ */
+export type Videos = Prisma.VideosModel

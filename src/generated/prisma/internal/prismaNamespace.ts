@@ -388,7 +388,8 @@ export const ModelName = {
   Category: 'Category',
   Careers: 'Careers',
   Applys: 'Applys',
-  Contacts: 'Contacts'
+  Contacts: 'Contacts',
+  Videos: 'Videos'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -404,7 +405,7 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
-    modelProps: "admin" | "category" | "careers" | "applys" | "contacts"
+    modelProps: "admin" | "category" | "careers" | "applys" | "contacts" | "videos"
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
@@ -778,6 +779,80 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         }
       }
     }
+    Videos: {
+      payload: Prisma.$VideosPayload<ExtArgs>
+      fields: Prisma.VideosFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.VideosFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$VideosPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.VideosFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$VideosPayload>
+        }
+        findFirst: {
+          args: Prisma.VideosFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$VideosPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.VideosFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$VideosPayload>
+        }
+        findMany: {
+          args: Prisma.VideosFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$VideosPayload>[]
+        }
+        create: {
+          args: Prisma.VideosCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$VideosPayload>
+        }
+        createMany: {
+          args: Prisma.VideosCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.VideosCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$VideosPayload>[]
+        }
+        delete: {
+          args: Prisma.VideosDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$VideosPayload>
+        }
+        update: {
+          args: Prisma.VideosUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$VideosPayload>
+        }
+        deleteMany: {
+          args: Prisma.VideosDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.VideosUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.VideosUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$VideosPayload>[]
+        }
+        upsert: {
+          args: Prisma.VideosUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$VideosPayload>
+        }
+        aggregate: {
+          args: Prisma.VideosAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateVideos>
+        }
+        groupBy: {
+          args: Prisma.VideosGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.VideosGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.VideosCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.VideosCountAggregateOutputType> | number
+        }
+      }
+    }
   }
 } & {
   other: {
@@ -872,6 +947,15 @@ export const ContactsScalarFieldEnum = {
 } as const
 
 export type ContactsScalarFieldEnum = (typeof ContactsScalarFieldEnum)[keyof typeof ContactsScalarFieldEnum]
+
+
+export const VideosScalarFieldEnum = {
+  id: 'id',
+  title_video: 'title_video',
+  link_video: 'link_video'
+} as const
+
+export type VideosScalarFieldEnum = (typeof VideosScalarFieldEnum)[keyof typeof VideosScalarFieldEnum]
 
 
 export const SortOrder = {
@@ -1043,6 +1127,7 @@ export type GlobalOmitConfig = {
   careers?: Prisma.CareersOmit
   applys?: Prisma.ApplysOmit
   contacts?: Prisma.ContactsOmit
+  videos?: Prisma.VideosOmit
 }
 
 /* Types for Logging */

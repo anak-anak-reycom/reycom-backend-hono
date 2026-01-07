@@ -25,20 +25,28 @@ AdminController.get('/admin', authAdminMiddleware, withPrisma, async (c) => {
 AdminController.delete('/admin/:id', authAdminMiddleware, withPrisma, async (c) => {
   const prisma = c.get('prisma');
   const id = Number(c.req.param('id'));
-  const response = await AdminService.deleteAdminById(prisma, id);
+  const response = await AdminService.DeleteAdminById(prisma, id);
+  return c.json(response, 200);
+})
+
+AdminController.patch('/admin/:id', authAdminMiddleware, withPrisma, async (c) => {
+  const prisma = c.get('prisma');
+  const id = Number(c.req.param('id'));
+  const request = await c.req.json();
+  const response = await AdminService.UpdateAdminById(prisma, id, request);
   return c.json(response, 200);
 })
 
 AdminController.post('/admin/login', withPrisma, async (c) => {
   const prisma = c.get('prisma');
   const request = await c.req.json();
-  const response = await AdminService.loginAdmin(prisma, request);
+  const response = await AdminService.LoginAdmin(prisma, request);
   return c.json(response, 200);
 })
 
 AdminController.post('/admin/logout', authAdminMiddleware, withPrisma, async (c) => {
   const prisma = c.get('prisma');
   const id = Number (c.req.param('id'));
-  const response = await AdminService.logoutAdmin(prisma, id);
+  const response = await AdminService.LogoutAdmin(prisma, id);
   return c.json(response, 200);
 })
