@@ -6,23 +6,23 @@ export class adminValidation {
     name_admin: z.preprocess(
       (v) => (v == null ? '' : v),
       z.string()
-        .min(3, 'Nama admin minimal 3 karakter')
-        .max(50, 'Nama admin maksimal 50 karakter'),
+        .min(3, 'Name Admin must be at least 3 characters long')
+        .max(50, 'Nama Admin maximum 50 characters'),
     ),
 
     email: z.preprocess(
       (v) => (v == null ? '' : v),
       z.string()
-        .min(1, 'Email wajib diisi')
-        .email('Format email tidak valid')
-        .max(100, 'Email maksimal 100 karakter'),
+        .min(1, 'Email must be at least 1 character long')
+        .email('Email format is invalid')
+        .max(100, 'Email maximum 100 characters'),
     ),
 
     password: z.preprocess(
       (v) => (v == null ? '' : v),
       z.string()
-        .min(6, 'Password minimal 6 karakter')
-        .max(100, 'Password maksimal 100 karakter'),
+        .min(6, 'Password must be at least 6 characters long')
+        .max(100, 'Password maximum 100 characters'),
     ),
   });
 
@@ -30,24 +30,24 @@ export class adminValidation {
     name_admin: z.preprocess(
       (v) => (v == null ? undefined : v),
       z.string()
-        .min(3, 'Nama admin minimal 3 karakter')
-        .max(50, 'Nama admin maksimal 50 karakter')
+        .min(3, 'Name Admin must be at least 3 characters long')
+        .max(50, 'Name Admin maximum 50 characters')
         .optional(),
     ),
 
     email: z.preprocess(
       (v) => (v == null ? undefined : v),
       z.string()
-        .email('Format email tidak valid')
-        .max(100, 'Email maksimal 100 karakter')
+        .email('Email format is invalid')
+        .max(100, 'Email maximum 100 characters')
         .optional(),
     ),
 
     password: z.preprocess(
       (v) => (v == null ? undefined : v),
       z.string()
-        .min(6, 'Password minimal 6 karakter')
-        .max(100, 'Password maksimal 100 karakter')
+        .min(6, 'Password must be at least 6 characters long')
+        .max(100, 'Password maximum 100 characters')
         .optional(),
     ),
   });
@@ -56,15 +56,15 @@ export class adminValidation {
     name_admin: z.preprocess(
       (v) => (v == null ? '' : v),
       z.string()
-        .min(3, 'Nama admin minimal 3 karakter')
-        .max(50, 'Nama admin maksimal 50 karakter'),
+        .min(3, 'Name Admin must be at least 3 characters long')
+        .max(50, 'Name Admin maximum 50 characters'),
     ),
 
     password: z.preprocess(
       (v) => (v == null ? '' : v),
       z.string()
-        .min(6, 'Password wajib diisi ')
-        .max(100, 'Password maksimal 100 karakter'),
+        .min(6, 'Password must be at least 6 characters long')
+        .max(100, 'Password maximum 100 characters'),
     ),
   });
 

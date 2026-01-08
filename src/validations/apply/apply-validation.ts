@@ -4,32 +4,32 @@ export class applyValidation {
    static readonly CREATE = z.object({
   name_apply: z.preprocess(
     (v) => (v == null ? '' : v),
-    z.string().min(1, 'Nama wajib diisi').max(50, 'Nama maksimal 50 karakter'),
+    z.string().min(1, 'Name must be at least 1 character long').max(50, 'Name maximum 50 characters'),
   ),
 
   email: z.preprocess(
     (v) => (v == null ? '' : v),
-    z.string().min(1, 'Email wajib diisi').email('Format email tidak valid'),
+    z.string().min(1, 'Email is required').email('Email format is invalid'),
   ),
 
   no_hp: z.preprocess(
     (v) => (v == null ? '' : v),
-    z.string().min(10, 'No HP minimal 10 digit'),
+    z.string().min(10, 'Phone Number must be at least 10 digits'),
   ),
 
   gender: z.preprocess(
     (v) => (v == null ? '' : v),
-    z.string().min(2, 'Gender wajib diisi').max(15),
+    z.string().min(2, 'Gender is required').max(15),
   ),
 
   domicile: z.preprocess(
     (v) => (v == null ? '' : v),
-    z.string().min(2, 'Domisili wajib diisi').max(50),
+    z.string().min(2, 'Domicile is required').max(50),
   ),
 
   resume: z.preprocess(
     (v) => (v == null ? '' : v),
-    z.string().min(1, 'Resume wajib diisi').min(5, 'Resume minimal 5 karakter'),
+    z.string().min(1, 'Resume is required').min(5, 'Resume must be at least 5 characters long'),
   ),
 });
 
@@ -37,32 +37,32 @@ export class applyValidation {
   static readonly UPDATE = z.object({
   name_apply: z.preprocess(
     (v) => (v == null ? undefined : v),
-    z.string().min(1, 'Nama minimal 1 karakter').max(50, 'Nama maksimal 50 karakter').optional(),
+    z.string().min(1, 'Name must be at least 1 character long').max(50, 'Name maximum 50 characters').optional(),
   ),
 
   email: z.preprocess(
     (v) => (v == null ? undefined : v),
-    z.string().email('Format email tidak valid').optional(),
+    z.string().email('Email format is invalid').optional(),
   ),
 
   no_hp: z.preprocess(
     (v) => (v == null ? undefined : v),
-    z.string().min(10, 'No HP minimal 10 digit').optional(),
+    z.string().min(10, 'Phone Number must be at least 10 digits').optional(),
   ),
 
   gender: z.preprocess(
     (v) => (v == null ? undefined : v),
-    z.string().min(2, 'Gender minimal 2 karakter').max(15, 'Gender maksimal 15 karakter').optional(),
+    z.string().min(2, 'Gender is required').max(15, 'Gender maximum 15 characters').optional(),
   ),
 
   domicile: z.preprocess(
     (v) => (v == null ? undefined : v),
-    z.string().min(2, 'Domisili minimal 2 karakter').max(50, 'Domisili maksimal 50 karakter').optional(),
+    z.string().min(2, 'Domicile is required').max(50, 'Domicile maximum 50 characters').optional(),
   ),
 
   resume: z.preprocess(
     (v) => (v == null ? undefined : v),
-    z.string().min(5, 'Resume minimal 5 karakter').optional(),
+    z.string().min(5, 'Resume must be at least 5 characters long').optional(),
   ),
 });
 
