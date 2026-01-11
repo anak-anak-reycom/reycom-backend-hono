@@ -42,6 +42,8 @@ export type ApplysMinAggregateOutputType = {
   gender: string | null
   domicile: string | null
   resume: string | null
+  created_at: Date | null
+  updated_at: Date | null
 }
 
 export type ApplysMaxAggregateOutputType = {
@@ -52,6 +54,8 @@ export type ApplysMaxAggregateOutputType = {
   gender: string | null
   domicile: string | null
   resume: string | null
+  created_at: Date | null
+  updated_at: Date | null
 }
 
 export type ApplysCountAggregateOutputType = {
@@ -62,6 +66,8 @@ export type ApplysCountAggregateOutputType = {
   gender: number
   domicile: number
   resume: number
+  created_at: number
+  updated_at: number
   _all: number
 }
 
@@ -82,6 +88,8 @@ export type ApplysMinAggregateInputType = {
   gender?: true
   domicile?: true
   resume?: true
+  created_at?: true
+  updated_at?: true
 }
 
 export type ApplysMaxAggregateInputType = {
@@ -92,6 +100,8 @@ export type ApplysMaxAggregateInputType = {
   gender?: true
   domicile?: true
   resume?: true
+  created_at?: true
+  updated_at?: true
 }
 
 export type ApplysCountAggregateInputType = {
@@ -102,6 +112,8 @@ export type ApplysCountAggregateInputType = {
   gender?: true
   domicile?: true
   resume?: true
+  created_at?: true
+  updated_at?: true
   _all?: true
 }
 
@@ -199,6 +211,8 @@ export type ApplysGroupByOutputType = {
   gender: string
   domicile: string
   resume: string
+  created_at: Date
+  updated_at: Date
   _count: ApplysCountAggregateOutputType | null
   _avg: ApplysAvgAggregateOutputType | null
   _sum: ApplysSumAggregateOutputType | null
@@ -232,6 +246,8 @@ export type ApplysWhereInput = {
   gender?: Prisma.StringFilter<"Applys"> | string
   domicile?: Prisma.StringFilter<"Applys"> | string
   resume?: Prisma.StringFilter<"Applys"> | string
+  created_at?: Prisma.DateTimeFilter<"Applys"> | Date | string
+  updated_at?: Prisma.DateTimeFilter<"Applys"> | Date | string
 }
 
 export type ApplysOrderByWithRelationInput = {
@@ -242,6 +258,8 @@ export type ApplysOrderByWithRelationInput = {
   gender?: Prisma.SortOrder
   domicile?: Prisma.SortOrder
   resume?: Prisma.SortOrder
+  created_at?: Prisma.SortOrder
+  updated_at?: Prisma.SortOrder
 }
 
 export type ApplysWhereUniqueInput = Prisma.AtLeast<{
@@ -255,6 +273,8 @@ export type ApplysWhereUniqueInput = Prisma.AtLeast<{
   gender?: Prisma.StringFilter<"Applys"> | string
   domicile?: Prisma.StringFilter<"Applys"> | string
   resume?: Prisma.StringFilter<"Applys"> | string
+  created_at?: Prisma.DateTimeFilter<"Applys"> | Date | string
+  updated_at?: Prisma.DateTimeFilter<"Applys"> | Date | string
 }, "id" | "email">
 
 export type ApplysOrderByWithAggregationInput = {
@@ -265,6 +285,8 @@ export type ApplysOrderByWithAggregationInput = {
   gender?: Prisma.SortOrder
   domicile?: Prisma.SortOrder
   resume?: Prisma.SortOrder
+  created_at?: Prisma.SortOrder
+  updated_at?: Prisma.SortOrder
   _count?: Prisma.ApplysCountOrderByAggregateInput
   _avg?: Prisma.ApplysAvgOrderByAggregateInput
   _max?: Prisma.ApplysMaxOrderByAggregateInput
@@ -283,6 +305,8 @@ export type ApplysScalarWhereWithAggregatesInput = {
   gender?: Prisma.StringWithAggregatesFilter<"Applys"> | string
   domicile?: Prisma.StringWithAggregatesFilter<"Applys"> | string
   resume?: Prisma.StringWithAggregatesFilter<"Applys"> | string
+  created_at?: Prisma.DateTimeWithAggregatesFilter<"Applys"> | Date | string
+  updated_at?: Prisma.DateTimeWithAggregatesFilter<"Applys"> | Date | string
 }
 
 export type ApplysCreateInput = {
@@ -292,6 +316,8 @@ export type ApplysCreateInput = {
   gender: string
   domicile: string
   resume: string
+  created_at?: Date | string
+  updated_at?: Date | string
 }
 
 export type ApplysUncheckedCreateInput = {
@@ -302,6 +328,8 @@ export type ApplysUncheckedCreateInput = {
   gender: string
   domicile: string
   resume: string
+  created_at?: Date | string
+  updated_at?: Date | string
 }
 
 export type ApplysUpdateInput = {
@@ -311,6 +339,8 @@ export type ApplysUpdateInput = {
   gender?: Prisma.StringFieldUpdateOperationsInput | string
   domicile?: Prisma.StringFieldUpdateOperationsInput | string
   resume?: Prisma.StringFieldUpdateOperationsInput | string
+  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type ApplysUncheckedUpdateInput = {
@@ -321,6 +351,8 @@ export type ApplysUncheckedUpdateInput = {
   gender?: Prisma.StringFieldUpdateOperationsInput | string
   domicile?: Prisma.StringFieldUpdateOperationsInput | string
   resume?: Prisma.StringFieldUpdateOperationsInput | string
+  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type ApplysCreateManyInput = {
@@ -331,6 +363,8 @@ export type ApplysCreateManyInput = {
   gender: string
   domicile: string
   resume: string
+  created_at?: Date | string
+  updated_at?: Date | string
 }
 
 export type ApplysUpdateManyMutationInput = {
@@ -340,6 +374,8 @@ export type ApplysUpdateManyMutationInput = {
   gender?: Prisma.StringFieldUpdateOperationsInput | string
   domicile?: Prisma.StringFieldUpdateOperationsInput | string
   resume?: Prisma.StringFieldUpdateOperationsInput | string
+  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type ApplysUncheckedUpdateManyInput = {
@@ -350,6 +386,8 @@ export type ApplysUncheckedUpdateManyInput = {
   gender?: Prisma.StringFieldUpdateOperationsInput | string
   domicile?: Prisma.StringFieldUpdateOperationsInput | string
   resume?: Prisma.StringFieldUpdateOperationsInput | string
+  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type ApplysCountOrderByAggregateInput = {
@@ -360,6 +398,8 @@ export type ApplysCountOrderByAggregateInput = {
   gender?: Prisma.SortOrder
   domicile?: Prisma.SortOrder
   resume?: Prisma.SortOrder
+  created_at?: Prisma.SortOrder
+  updated_at?: Prisma.SortOrder
 }
 
 export type ApplysAvgOrderByAggregateInput = {
@@ -374,6 +414,8 @@ export type ApplysMaxOrderByAggregateInput = {
   gender?: Prisma.SortOrder
   domicile?: Prisma.SortOrder
   resume?: Prisma.SortOrder
+  created_at?: Prisma.SortOrder
+  updated_at?: Prisma.SortOrder
 }
 
 export type ApplysMinOrderByAggregateInput = {
@@ -384,6 +426,8 @@ export type ApplysMinOrderByAggregateInput = {
   gender?: Prisma.SortOrder
   domicile?: Prisma.SortOrder
   resume?: Prisma.SortOrder
+  created_at?: Prisma.SortOrder
+  updated_at?: Prisma.SortOrder
 }
 
 export type ApplysSumOrderByAggregateInput = {
@@ -400,6 +444,8 @@ export type ApplysSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs =
   gender?: boolean
   domicile?: boolean
   resume?: boolean
+  created_at?: boolean
+  updated_at?: boolean
 }, ExtArgs["result"]["applys"]>
 
 export type ApplysSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -410,6 +456,8 @@ export type ApplysSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extens
   gender?: boolean
   domicile?: boolean
   resume?: boolean
+  created_at?: boolean
+  updated_at?: boolean
 }, ExtArgs["result"]["applys"]>
 
 export type ApplysSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -420,6 +468,8 @@ export type ApplysSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extens
   gender?: boolean
   domicile?: boolean
   resume?: boolean
+  created_at?: boolean
+  updated_at?: boolean
 }, ExtArgs["result"]["applys"]>
 
 export type ApplysSelectScalar = {
@@ -430,9 +480,11 @@ export type ApplysSelectScalar = {
   gender?: boolean
   domicile?: boolean
   resume?: boolean
+  created_at?: boolean
+  updated_at?: boolean
 }
 
-export type ApplysOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "name_apply" | "email" | "no_hp" | "gender" | "domicile" | "resume", ExtArgs["result"]["applys"]>
+export type ApplysOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "name_apply" | "email" | "no_hp" | "gender" | "domicile" | "resume" | "created_at" | "updated_at", ExtArgs["result"]["applys"]>
 
 export type $ApplysPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "Applys"
@@ -445,6 +497,8 @@ export type $ApplysPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs
     gender: string
     domicile: string
     resume: string
+    created_at: Date
+    updated_at: Date
   }, ExtArgs["result"]["applys"]>
   composites: {}
 }
@@ -875,6 +929,8 @@ export interface ApplysFieldRefs {
   readonly gender: Prisma.FieldRef<"Applys", 'String'>
   readonly domicile: Prisma.FieldRef<"Applys", 'String'>
   readonly resume: Prisma.FieldRef<"Applys", 'String'>
+  readonly created_at: Prisma.FieldRef<"Applys", 'DateTime'>
+  readonly updated_at: Prisma.FieldRef<"Applys", 'DateTime'>
 }
     
 

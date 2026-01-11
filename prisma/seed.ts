@@ -16,12 +16,16 @@ const adminData: Prisma.AdminCreateInput[] = [
     email: "admin@company.com",
     password: "password123",
     token: null,
+    created_at: new Date(),
+    updated_at: new Date(),
   },
   {
     name_admin: "HR Admin",
     email: "hr@company.com",
     password: "password123",
     token: null,
+    created_at: new Date(),
+    updated_at: new Date(),
   },
 ];
 
@@ -38,6 +42,8 @@ const categoryData: Prisma.CategoryCreateInput[] = [
         { job_name: "Frontend Developer" },
       ],
     },
+    created_at: new Date(),
+    updated_at: new Date(),
   },
   {
     name_category: "Marketing",
@@ -47,6 +53,8 @@ const categoryData: Prisma.CategoryCreateInput[] = [
         { job_name: "Digital Marketing Specialist" },
       ],
     },
+    created_at: new Date(),
+    updated_at: new Date(),
   },
   {
     name_category: "Design",
@@ -56,6 +64,8 @@ const categoryData: Prisma.CategoryCreateInput[] = [
         { job_name: "UI/UX Designer" },
       ],
     },
+    created_at: new Date(),
+    updated_at: new Date(),
   },
 ];
 
@@ -70,6 +80,8 @@ const applysData: Prisma.ApplysCreateInput[] = [
     gender: "Male",
     domicile: "Jakarta",
     resume: "andi_resume.pdf",
+    created_at: new Date(),
+    updated_at: new Date(),
   },
   {
     name_apply: "Siti Aisyah",
@@ -78,6 +90,8 @@ const applysData: Prisma.ApplysCreateInput[] = [
     gender: "Female",
     domicile: "Bandung",
     resume: "siti_resume.pdf",
+    created_at: new Date(),
+    updated_at: new Date(),
   },
 ];
 
@@ -93,6 +107,8 @@ const contactsData: Prisma.ContactsCreateInput[] = [
     no_hp: "0211234567",
     address: "Jl. Sudirman No. 1, Jakarta",
     website: "https://company.com",
+    created_at: new Date(),
+    updated_at: new Date(),
   },
   {
     branch: "Branch Singapore",
@@ -102,6 +118,8 @@ const contactsData: Prisma.ContactsCreateInput[] = [
     no_hp: "+65 1234 5678",
     address: "Orchard Road, Singapore",
     website: "https://company.com/sg",
+    created_at: new Date(),
+    updated_at: new Date(),
   },
 ];
 

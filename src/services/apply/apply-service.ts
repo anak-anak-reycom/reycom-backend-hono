@@ -55,7 +55,7 @@ export class ApplyService {
     }
 
   // ===============================
-  // GET ALL APPLY BY ID
+  // GET APPLY BY ID
   // ===============================
     static async GetApplyById(
         prisma: PrismaClient,
@@ -66,7 +66,7 @@ export class ApplyService {
         });
         if (!apply) {
             throw new HTTPException(404, {
-                message: 'Apply not found',
+                message: 'Apply with this id not found',
             });
         }
         return toApplyResponse(

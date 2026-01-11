@@ -80,7 +80,9 @@ export const AdminScalarFieldEnum = {
   name_admin: 'name_admin',
   email: 'email',
   password: 'password',
-  token: 'token'
+  token: 'token',
+  created_at: 'created_at',
+  updated_at: 'updated_at'
 } as const
 
 export type AdminScalarFieldEnum = (typeof AdminScalarFieldEnum)[keyof typeof AdminScalarFieldEnum]
@@ -89,7 +91,9 @@ export type AdminScalarFieldEnum = (typeof AdminScalarFieldEnum)[keyof typeof Ad
 export const CategoryScalarFieldEnum = {
   id: 'id',
   name_category: 'name_category',
-  job_type: 'job_type'
+  job_type: 'job_type',
+  created_at: 'created_at',
+  updated_at: 'updated_at'
 } as const
 
 export type CategoryScalarFieldEnum = (typeof CategoryScalarFieldEnum)[keyof typeof CategoryScalarFieldEnum]
@@ -99,7 +103,9 @@ export const CareersScalarFieldEnum = {
   id: 'id',
   job_name: 'job_name',
   job_date: 'job_date',
-  categoryId: 'categoryId'
+  categoryId: 'categoryId',
+  created_at: 'created_at',
+  updated_at: 'updated_at'
 } as const
 
 export type CareersScalarFieldEnum = (typeof CareersScalarFieldEnum)[keyof typeof CareersScalarFieldEnum]
@@ -112,7 +118,9 @@ export const ApplysScalarFieldEnum = {
   no_hp: 'no_hp',
   gender: 'gender',
   domicile: 'domicile',
-  resume: 'resume'
+  resume: 'resume',
+  created_at: 'created_at',
+  updated_at: 'updated_at'
 } as const
 
 export type ApplysScalarFieldEnum = (typeof ApplysScalarFieldEnum)[keyof typeof ApplysScalarFieldEnum]
@@ -126,7 +134,9 @@ export const ContactsScalarFieldEnum = {
   email: 'email',
   no_hp: 'no_hp',
   address: 'address',
-  website: 'website'
+  website: 'website',
+  created_at: 'created_at',
+  updated_at: 'updated_at'
 } as const
 
 export type ContactsScalarFieldEnum = (typeof ContactsScalarFieldEnum)[keyof typeof ContactsScalarFieldEnum]
@@ -135,7 +145,9 @@ export type ContactsScalarFieldEnum = (typeof ContactsScalarFieldEnum)[keyof typ
 export const VideosScalarFieldEnum = {
   id: 'id',
   title_video: 'title_video',
-  link_video: 'link_video'
+  link_video: 'link_video',
+  created_at: 'created_at',
+  updated_at: 'updated_at'
 } as const
 
 export type VideosScalarFieldEnum = (typeof VideosScalarFieldEnum)[keyof typeof VideosScalarFieldEnum]

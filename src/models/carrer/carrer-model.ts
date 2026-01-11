@@ -6,6 +6,10 @@ import type { Careers } from "../../generated/prisma/client.js";
 export type CreateCareerRequest = {
     job_date: Date;
     job_name: string;
+    career?: {
+    title: string;
+    description: string;
+  }[];
 };
 
 /* =======================
@@ -15,6 +19,8 @@ export type CareerData = {
     id_career: number;
     job_date: Date;
     job_name: string;
+    created_at?: Date;
+    updated_at?: Date;
 };
 
 /* =======================
@@ -32,6 +38,8 @@ export function toCareerData(
         id_career: career.id,
         job_date: career.job_date,
         job_name: career.job_name,
+        created_at: career.created_at,
+        updated_at: career.updated_at,
     };
 }
 

@@ -212,7 +212,7 @@ static async LogoutAdmin(
     });
     if (!admin) {
       throw new HTTPException(404, {
-        message: 'Admin not found',
+        message: 'Admin with this id not found',
       });
     }
     return toAdminResponse(

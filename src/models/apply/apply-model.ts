@@ -23,6 +23,8 @@ export type ApplyData = {
     gender: string;
     domicile: string;
     resume: string;
+    created_at?: Date;
+    updated_at?: Date;
 };
 
 /* =======================
@@ -42,6 +44,8 @@ export function toApplyData(apply: Applys): ApplyData {
         gender: apply.gender,
         domicile: apply.domicile,
         resume: apply.resume,
+        created_at: apply.created_at,
+        updated_at: apply.updated_at,
     };
 }
 

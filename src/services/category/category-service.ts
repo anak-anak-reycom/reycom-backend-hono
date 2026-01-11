@@ -15,18 +15,33 @@ export class CategoryService {
     // CREATE CATEGORY
     // ===============================
     static async CreateCategory(
-        prisma: PrismaClient,
-        request: CreateCategoryRequest,
-    ): Promise<ApiResponse<CategoryData>> {
-        const validatedRequest = CategoryValidation.CREATE.parse(request);
-        const category = await prisma.category.create({
-            data: validatedRequest,
-        });
-        return toCategoryResponse(
-            category,
-            'Category created successfully'
-        );
-    }
+    prisma: PrismaClient,
+    request: CreateCategoryRequest,
+): Promise<ApiResponse<CategoryData>> {
+
+    const validatedRequest = CategoryValidation.CREATE.parse(request);
+
+    const { career, ...categoryData } = validatedRequest;
+
+    const category = await prisma.category.create({
+        data: {
+            ...categoryData,
+            ...(career && career.length > 0 && {
+                careers: {
+                    create: career.map((c) => ({
+                        job_name: c.job_name,
+                        job_date: c.job_date, 
+                    })),
+                },
+            }),
+        },
+        include: {
+            careers: true, 
+        },
+    });
+
+    return toCategoryResponse(category, 'Category created successfully');
+}
 
     // ===============================
     // GET ALL CATEGORIES
@@ -53,7 +68,7 @@ export class CategoryService {
         });
         if (!category) {
             throw new HTTPException(404, {
-                message: 'Category not found',
+                message: 'Category with this id not found',
             });
         }
         return toCategoryResponse(

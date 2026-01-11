@@ -6,6 +6,28 @@ import type { ContextWithPrisma } from '../../types/context.js';
 
 export const CareerController = new Hono<ContextWithPrisma>();
 
+// ===============================
+// GET ALL CAREERS
+// ===============================
+CareerController.get('/career', withPrisma, async (c) => {
+    const prisma = c.get('prisma');
+    const response = await CarrerService.GetAllCareers(prisma);
+    return c.json(response, 200);
+})
+
+// ===============================
+// GET CAREER BY ID
+// ===============================
+CareerController.get('/career/:id', withPrisma, async (c) => {
+    const prisma = c.get('prisma');
+    const id_career = Number(c.req.param('id'));
+    const response = await CarrerService.GetCareerById(prisma, id_career);
+    return c.json(response, 200);
+})
+
+// ===============================
+// CREATE CAREER
+// ===============================
 CareerController.post('/career', authAdminMiddleware, withPrisma, async (c) => {
     const prisma = c.get('prisma');
     const request = await c.req.json();
@@ -14,12 +36,9 @@ CareerController.post('/career', authAdminMiddleware, withPrisma, async (c) => {
     return c.json(response, 201);
 })
 
-CareerController.get('/career', withPrisma, async (c) => {
-    const prisma = c.get('prisma');
-    const response = await CarrerService.GetAllCareers(prisma);
-    return c.json(response, 200);
-})
-
+// ===============================
+// UPDATE APPLY
+// ===============================
 CareerController.patch('/career/:id', authAdminMiddleware, withPrisma, async (c) => {
     const prisma = c.get('prisma');
     const id_career = Number(c.req.param('id'));
@@ -28,6 +47,9 @@ CareerController.patch('/career/:id', authAdminMiddleware, withPrisma, async (c)
     return c.json(response, 200);
 })
 
+// ===============================
+// DELETE APPLY
+// ===============================
 CareerController.delete('/career/:id', authAdminMiddleware, withPrisma, async (c) => {
     const prisma = c.get('prisma');
     const id_career = Number(c.req.param('id'));

@@ -6,12 +6,28 @@ import type { ContextWithPrisma } from '../../types/context.js';
 
 export const ApplyController = new Hono<ContextWithPrisma>();
 
+// ===============================
+// GET ALL APPLY
+// ===============================
 ApplyController.get('/apply', authAdminMiddleware, withPrisma, async (c) => {
     const prisma = c.get('prisma');
     const response = await ApplyService.GetAllApply(prisma);
     return c.json(response, 200);
 });
 
+// ===============================
+// GET APPLY BY ID
+// ===============================
+ApplyController.get('/apply/:id', authAdminMiddleware, withPrisma, async (c) => {
+    const prisma = c.get('prisma');
+    const id_apply = Number(c.req.param('id'));
+    const response = await ApplyService.GetApplyById(prisma, id_apply);
+    return c.json(response, 200);
+});
+
+// ===============================
+// CREATE APPLY
+// ===============================
 ApplyController.post('/apply', withPrisma, async (c) => {
     const prisma = c.get('prisma');
     const request = await c.req.json();
@@ -19,6 +35,9 @@ ApplyController.post('/apply', withPrisma, async (c) => {
     return c.json(response, 201);
 })
 
+// ===============================
+// UPDATE APPLY
+// ===============================
 ApplyController.patch('/apply/:id', authAdminMiddleware, withPrisma, async (c) => {
     const prisma = c.get('prisma');
     const id_apply = Number(c.req.param('id'));
@@ -27,6 +46,9 @@ ApplyController.patch('/apply/:id', authAdminMiddleware, withPrisma, async (c) =
     return c.json(response, 200);
 })
 
+// ===============================
+// DELETE APPLY
+// ===============================
 ApplyController.delete('/apply/:id', authAdminMiddleware, withPrisma, async (c) => {
     const prisma = c.get('prisma');
     const id_apply = Number(c.req.param('id'));

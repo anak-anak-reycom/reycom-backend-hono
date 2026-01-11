@@ -26,6 +26,8 @@ export type AdminData = {
     name_admin: string;
     email: string;
     token?: string;
+    created_at?: Date;
+    updated_at?: Date;
 };
 
 /* =======================
@@ -45,6 +47,8 @@ export function toAdminData(
         name_admin: admin.name_admin,
         email: admin.email,
         token,
+        created_at: admin.created_at,
+        updated_at: admin.updated_at,
     };
 }
 export function toAdminListResponse(

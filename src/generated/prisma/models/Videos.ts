@@ -38,18 +38,24 @@ export type VideosMinAggregateOutputType = {
   id: number | null
   title_video: string | null
   link_video: string | null
+  created_at: Date | null
+  updated_at: Date | null
 }
 
 export type VideosMaxAggregateOutputType = {
   id: number | null
   title_video: string | null
   link_video: string | null
+  created_at: Date | null
+  updated_at: Date | null
 }
 
 export type VideosCountAggregateOutputType = {
   id: number
   title_video: number
   link_video: number
+  created_at: number
+  updated_at: number
   _all: number
 }
 
@@ -66,18 +72,24 @@ export type VideosMinAggregateInputType = {
   id?: true
   title_video?: true
   link_video?: true
+  created_at?: true
+  updated_at?: true
 }
 
 export type VideosMaxAggregateInputType = {
   id?: true
   title_video?: true
   link_video?: true
+  created_at?: true
+  updated_at?: true
 }
 
 export type VideosCountAggregateInputType = {
   id?: true
   title_video?: true
   link_video?: true
+  created_at?: true
+  updated_at?: true
   _all?: true
 }
 
@@ -171,6 +183,8 @@ export type VideosGroupByOutputType = {
   id: number
   title_video: string
   link_video: string
+  created_at: Date
+  updated_at: Date
   _count: VideosCountAggregateOutputType | null
   _avg: VideosAvgAggregateOutputType | null
   _sum: VideosSumAggregateOutputType | null
@@ -200,12 +214,16 @@ export type VideosWhereInput = {
   id?: Prisma.IntFilter<"Videos"> | number
   title_video?: Prisma.StringFilter<"Videos"> | string
   link_video?: Prisma.StringFilter<"Videos"> | string
+  created_at?: Prisma.DateTimeFilter<"Videos"> | Date | string
+  updated_at?: Prisma.DateTimeFilter<"Videos"> | Date | string
 }
 
 export type VideosOrderByWithRelationInput = {
   id?: Prisma.SortOrder
   title_video?: Prisma.SortOrder
   link_video?: Prisma.SortOrder
+  created_at?: Prisma.SortOrder
+  updated_at?: Prisma.SortOrder
 }
 
 export type VideosWhereUniqueInput = Prisma.AtLeast<{
@@ -215,12 +233,16 @@ export type VideosWhereUniqueInput = Prisma.AtLeast<{
   NOT?: Prisma.VideosWhereInput | Prisma.VideosWhereInput[]
   title_video?: Prisma.StringFilter<"Videos"> | string
   link_video?: Prisma.StringFilter<"Videos"> | string
+  created_at?: Prisma.DateTimeFilter<"Videos"> | Date | string
+  updated_at?: Prisma.DateTimeFilter<"Videos"> | Date | string
 }, "id">
 
 export type VideosOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
   title_video?: Prisma.SortOrder
   link_video?: Prisma.SortOrder
+  created_at?: Prisma.SortOrder
+  updated_at?: Prisma.SortOrder
   _count?: Prisma.VideosCountOrderByAggregateInput
   _avg?: Prisma.VideosAvgOrderByAggregateInput
   _max?: Prisma.VideosMaxOrderByAggregateInput
@@ -235,51 +257,69 @@ export type VideosScalarWhereWithAggregatesInput = {
   id?: Prisma.IntWithAggregatesFilter<"Videos"> | number
   title_video?: Prisma.StringWithAggregatesFilter<"Videos"> | string
   link_video?: Prisma.StringWithAggregatesFilter<"Videos"> | string
+  created_at?: Prisma.DateTimeWithAggregatesFilter<"Videos"> | Date | string
+  updated_at?: Prisma.DateTimeWithAggregatesFilter<"Videos"> | Date | string
 }
 
 export type VideosCreateInput = {
   title_video: string
   link_video: string
+  created_at?: Date | string
+  updated_at?: Date | string
 }
 
 export type VideosUncheckedCreateInput = {
   id?: number
   title_video: string
   link_video: string
+  created_at?: Date | string
+  updated_at?: Date | string
 }
 
 export type VideosUpdateInput = {
   title_video?: Prisma.StringFieldUpdateOperationsInput | string
   link_video?: Prisma.StringFieldUpdateOperationsInput | string
+  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type VideosUncheckedUpdateInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
   title_video?: Prisma.StringFieldUpdateOperationsInput | string
   link_video?: Prisma.StringFieldUpdateOperationsInput | string
+  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type VideosCreateManyInput = {
   id?: number
   title_video: string
   link_video: string
+  created_at?: Date | string
+  updated_at?: Date | string
 }
 
 export type VideosUpdateManyMutationInput = {
   title_video?: Prisma.StringFieldUpdateOperationsInput | string
   link_video?: Prisma.StringFieldUpdateOperationsInput | string
+  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type VideosUncheckedUpdateManyInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
   title_video?: Prisma.StringFieldUpdateOperationsInput | string
   link_video?: Prisma.StringFieldUpdateOperationsInput | string
+  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type VideosCountOrderByAggregateInput = {
   id?: Prisma.SortOrder
   title_video?: Prisma.SortOrder
   link_video?: Prisma.SortOrder
+  created_at?: Prisma.SortOrder
+  updated_at?: Prisma.SortOrder
 }
 
 export type VideosAvgOrderByAggregateInput = {
@@ -290,12 +330,16 @@ export type VideosMaxOrderByAggregateInput = {
   id?: Prisma.SortOrder
   title_video?: Prisma.SortOrder
   link_video?: Prisma.SortOrder
+  created_at?: Prisma.SortOrder
+  updated_at?: Prisma.SortOrder
 }
 
 export type VideosMinOrderByAggregateInput = {
   id?: Prisma.SortOrder
   title_video?: Prisma.SortOrder
   link_video?: Prisma.SortOrder
+  created_at?: Prisma.SortOrder
+  updated_at?: Prisma.SortOrder
 }
 
 export type VideosSumOrderByAggregateInput = {
@@ -308,27 +352,35 @@ export type VideosSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs =
   id?: boolean
   title_video?: boolean
   link_video?: boolean
+  created_at?: boolean
+  updated_at?: boolean
 }, ExtArgs["result"]["videos"]>
 
 export type VideosSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
   title_video?: boolean
   link_video?: boolean
+  created_at?: boolean
+  updated_at?: boolean
 }, ExtArgs["result"]["videos"]>
 
 export type VideosSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
   title_video?: boolean
   link_video?: boolean
+  created_at?: boolean
+  updated_at?: boolean
 }, ExtArgs["result"]["videos"]>
 
 export type VideosSelectScalar = {
   id?: boolean
   title_video?: boolean
   link_video?: boolean
+  created_at?: boolean
+  updated_at?: boolean
 }
 
-export type VideosOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "title_video" | "link_video", ExtArgs["result"]["videos"]>
+export type VideosOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "title_video" | "link_video" | "created_at" | "updated_at", ExtArgs["result"]["videos"]>
 
 export type $VideosPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "Videos"
@@ -337,6 +389,8 @@ export type $VideosPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs
     id: number
     title_video: string
     link_video: string
+    created_at: Date
+    updated_at: Date
   }, ExtArgs["result"]["videos"]>
   composites: {}
 }
@@ -763,6 +817,8 @@ export interface VideosFieldRefs {
   readonly id: Prisma.FieldRef<"Videos", 'Int'>
   readonly title_video: Prisma.FieldRef<"Videos", 'String'>
   readonly link_video: Prisma.FieldRef<"Videos", 'String'>
+  readonly created_at: Prisma.FieldRef<"Videos", 'DateTime'>
+  readonly updated_at: Prisma.FieldRef<"Videos", 'DateTime'>
 }
     
 

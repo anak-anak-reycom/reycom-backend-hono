@@ -9,6 +9,7 @@ import {
 import { carrerValidation } from '../../validations/carrer/carrer-validation.js';
 import { HTTPException } from 'hono/http-exception';
 
+
 export class CarrerService {
 
   // ===============================
@@ -58,7 +59,7 @@ export class CarrerService {
     });
     if (!career) {
       throw new HTTPException(404, {
-        message: 'Career not found',
+        message: 'Career with this id not found',
       });
     }
     return toCareerResponse(

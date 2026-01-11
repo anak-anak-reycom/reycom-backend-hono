@@ -29,6 +29,15 @@ AdminController.get('/admin', authAdminMiddleware, withPrisma, async (c) => {
 });
 
 // ===============================
+// GET ADMIN BY ID
+// ===============================
+AdminController.get('/admin/:id', authAdminMiddleware, withPrisma, async (c) => {
+  const prisma = c.get('prisma');
+  const id = Number(c.req.param('id'));
+  const response = await AdminService.GetAdminById(prisma, id);
+  return c.json(response, 200);
+})
+// ===============================
 // DELETE ADMIN
 // ===============================
 AdminController.delete('/admin/:id', authAdminMiddleware, withPrisma, async (c) => {
