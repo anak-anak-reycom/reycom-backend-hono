@@ -84,6 +84,29 @@ export class ApplyService {
   }
 
   // ===============================
+  // GET APPLICATION BY NAME
+  // ===============================
+  static async FindApplicationByName(
+    prisma: PrismaClient,
+    name_apply: string,
+  ): Promise<ApiResponse<ApplyData>> {
+    const application = await ApplyRepository.findApplicationByName(
+      prisma,
+      name_apply,
+    );
+
+    if (!application) {
+      throw new HTTPException(404, {
+        message: 'Application not found',
+      });
+    }
+    return toApplyResponse(
+      application,
+      'Get application successfully',
+    );
+  }
+
+  // ===============================
   // UPDATE APPLICATION
   // ===============================
   static async UpdateApplicationById(

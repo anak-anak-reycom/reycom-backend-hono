@@ -19,7 +19,7 @@ export class ApplyRepository {
         return PrismaClient.applys.create({ data });
     }
     
-    static async findByNameApplication(
+    static async findApplicationByName(
         prisma: PrismaClient,
         name_apply: string,
     ) {

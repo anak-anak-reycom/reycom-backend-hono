@@ -5,7 +5,7 @@ import {
   type ApiResponse,
   toCareerResponse,
   toCareerListResponse,
-} from '../../models/carrer/carrer-model.js';
+} from '../../models/career/career-model.js';
 import { carrerValidation } from '../../validations/carrer/carrer-validation.js';
 import { HTTPException } from 'hono/http-exception';
 

@@ -1,6 +1,6 @@
 import { Hono } from 'hono';
 import { AdminController } from './controllers/admin/admin-controller.js';
-import { CareerController } from './controllers/carrer/carrer-controller.js';
+import { CareerController } from './controllers/career/career-controller.js';
 import { ApplyController } from './controllers/apply/apply-controller.js';
 import { HTTPException } from 'hono/http-exception';
 import { ZodError } from 'zod';
@@ -13,6 +13,7 @@ import { cors } from 'hono/cors'
 
 
 const app = new Hono();
+
 
 app.use(
   '*',

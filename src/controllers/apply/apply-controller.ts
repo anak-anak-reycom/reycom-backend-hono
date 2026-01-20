@@ -2,56 +2,111 @@ import { Hono } from 'hono';
 import withPrisma from '../../lib/prisma.js';
 import { authAdminMiddleware } from '../../middlewares/middleware.js';
 import { ApplyService } from '../../services/apply/apply-service.js';
+import { applyValidation } from '../../validations/apply/apply-validation.js';
+import { HTTPException } from 'hono/http-exception';
+
 import type { ContextWithPrisma } from '../../types/context.js';
 
 export const ApplyController = new Hono<ContextWithPrisma>();
 
+async function safeJson(c: any) {
+  try {
+    return await c.req.json();
+  } catch {
+    throw new HTTPException(400, {
+      message: 'Invalid or empty JSON body',
+    });
+  }
+}
+
 // ===============================
 // GET ALL APPLY
 // ===============================
-ApplyController.get('/apply', authAdminMiddleware, withPrisma, async (c) => {
-    const prisma = c.get('prisma');
-    const response = await ApplyService.GetAllApply(prisma);
-    return c.json(response, 200);
+ApplyController.get('/apply', withPrisma, async (c) => {
+  const prisma = c.get('prisma');
+
+  const response = await ApplyService.GetAllApplications(prisma);
+  return c.json(response, 200);
 });
 
 // ===============================
 // GET APPLY BY ID
 // ===============================
-ApplyController.get('/apply/:id', authAdminMiddleware, withPrisma, async (c) => {
-    const prisma = c.get('prisma');
-    const id_apply = Number(c.req.param('id'));
-    const response = await ApplyService.GetApplyById(prisma, id_apply);
-    return c.json(response, 200);
+ApplyController.get('/apply/:id', withPrisma, async (c) => {
+  const prisma = c.get('prisma');
+  const id = Number(c.req.param('id'));
+
+  if (Number.isNaN(id)) {
+    throw new HTTPException(400, { message: 'Invalid apply id' });
+  }
+
+  const response = await ApplyService.GetApplicationById(prisma, id);
+  return c.json(response, 200);
+});
+
+// ===============================
+// GET APPLY BY NAME
+// ===============================
+ApplyController.get('/apply/name/:name', withPrisma, async (c) => {
+  const prisma = c.get('prisma');
+  const name_apply = c.req.param('name');
+  const response = await ApplyService.FindApplicationByName(prisma, name_apply);
+  return c.json(response, 200);
 });
 
 // ===============================
 // CREATE APPLY
 // ===============================
 ApplyController.post('/apply', withPrisma, async (c) => {
-    const prisma = c.get('prisma');
-    const request = await c.req.json();
-    const response = await ApplyService.CreateApply(prisma, request);
-    return c.json(response, 201);
-})
+  const prisma = c.get('prisma');
+
+  const raw = await safeJson(c);
+  const validated = applyValidation.CREATE.parse(raw);
+
+  const response = await ApplyService.CreateApplication(prisma, validated);
+  return c.json(response, 201);
+});
 
 // ===============================
 // UPDATE APPLY
 // ===============================
 ApplyController.patch('/apply/:id', authAdminMiddleware, withPrisma, async (c) => {
-    const prisma = c.get('prisma');
-    const id_apply = Number(c.req.param('id'));
-    const request = await c.req.json();
-    const response = await ApplyService.UpdateApplyById(prisma, id_apply, request);
-    return c.json(response, 200);
-})
+  const prisma = c.get('prisma');
+  const id = Number(c.req.param('id'));
+
+  if (Number.isNaN(id)) {
+    throw new HTTPException(400, { message: 'Invalid apply id' });
+  }
+
+  const raw = await safeJson(c);
+  const validated = applyValidation.UPDATE.parse(raw);
+
+  if (Object.keys(validated).length === 0) {
+    throw new HTTPException(400, {
+      message: 'Minimum one field is required to update apply',
+    });
+  }
+
+  const response = await ApplyService.UpdateApplicationById(
+    prisma,
+    id,
+    validated,
+  );
+
+  return c.json(response, 200);
+});
 
 // ===============================
 // DELETE APPLY
 // ===============================
 ApplyController.delete('/apply/:id', authAdminMiddleware, withPrisma, async (c) => {
-    const prisma = c.get('prisma');
-    const id_apply = Number(c.req.param('id'));
-    const response = await ApplyService.DeleteApplyById(prisma, id_apply);
-    return c.json(response, 200);
-})
+  const prisma = c.get('prisma');
+  const id = Number(c.req.param('id'));
+
+  if (Number.isNaN(id)) {
+    throw new HTTPException(400, { message: 'Invalid apply id' });
+  }
+
+  const response = await ApplyService.DeleteApplicationById(prisma, id);
+  return c.json(response, 200);
+});
