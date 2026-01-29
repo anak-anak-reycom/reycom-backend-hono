@@ -40,24 +40,24 @@ export type CompanyMinAggregateOutputType = {
   id: number | null
   countryId: number | null
   name_company: string | null
-  created_at: Date | null
-  updated_at: Date | null
+  createdAt: Date | null
+  updatedAt: Date | null
 }
 
 export type CompanyMaxAggregateOutputType = {
   id: number | null
   countryId: number | null
   name_company: string | null
-  created_at: Date | null
-  updated_at: Date | null
+  createdAt: Date | null
+  updatedAt: Date | null
 }
 
 export type CompanyCountAggregateOutputType = {
   id: number
   countryId: number
   name_company: number
-  created_at: number
-  updated_at: number
+  createdAt: number
+  updatedAt: number
   _all: number
 }
 
@@ -76,24 +76,24 @@ export type CompanyMinAggregateInputType = {
   id?: true
   countryId?: true
   name_company?: true
-  created_at?: true
-  updated_at?: true
+  createdAt?: true
+  updatedAt?: true
 }
 
 export type CompanyMaxAggregateInputType = {
   id?: true
   countryId?: true
   name_company?: true
-  created_at?: true
-  updated_at?: true
+  createdAt?: true
+  updatedAt?: true
 }
 
 export type CompanyCountAggregateInputType = {
   id?: true
   countryId?: true
   name_company?: true
-  created_at?: true
-  updated_at?: true
+  createdAt?: true
+  updatedAt?: true
   _all?: true
 }
 
@@ -187,8 +187,8 @@ export type CompanyGroupByOutputType = {
   id: number
   countryId: number
   name_company: string
-  created_at: Date
-  updated_at: Date
+  createdAt: Date
+  updatedAt: Date
   _count: CompanyCountAggregateOutputType | null
   _avg: CompanyAvgAggregateOutputType | null
   _sum: CompanySumAggregateOutputType | null
@@ -218,8 +218,8 @@ export type CompanyWhereInput = {
   id?: Prisma.IntFilter<"Company"> | number
   countryId?: Prisma.IntFilter<"Company"> | number
   name_company?: Prisma.StringFilter<"Company"> | string
-  created_at?: Prisma.DateTimeFilter<"Company"> | Date | string
-  updated_at?: Prisma.DateTimeFilter<"Company"> | Date | string
+  createdAt?: Prisma.DateTimeFilter<"Company"> | Date | string
+  updatedAt?: Prisma.DateTimeFilter<"Company"> | Date | string
   country?: Prisma.XOR<Prisma.CountryScalarRelationFilter, Prisma.CountryWhereInput>
   branches?: Prisma.BranchCompanyListRelationFilter
 }
@@ -228,8 +228,8 @@ export type CompanyOrderByWithRelationInput = {
   id?: Prisma.SortOrder
   countryId?: Prisma.SortOrder
   name_company?: Prisma.SortOrder
-  created_at?: Prisma.SortOrder
-  updated_at?: Prisma.SortOrder
+  createdAt?: Prisma.SortOrder
+  updatedAt?: Prisma.SortOrder
   country?: Prisma.CountryOrderByWithRelationInput
   branches?: Prisma.BranchCompanyOrderByRelationAggregateInput
 }
@@ -241,8 +241,8 @@ export type CompanyWhereUniqueInput = Prisma.AtLeast<{
   NOT?: Prisma.CompanyWhereInput | Prisma.CompanyWhereInput[]
   countryId?: Prisma.IntFilter<"Company"> | number
   name_company?: Prisma.StringFilter<"Company"> | string
-  created_at?: Prisma.DateTimeFilter<"Company"> | Date | string
-  updated_at?: Prisma.DateTimeFilter<"Company"> | Date | string
+  createdAt?: Prisma.DateTimeFilter<"Company"> | Date | string
+  updatedAt?: Prisma.DateTimeFilter<"Company"> | Date | string
   country?: Prisma.XOR<Prisma.CountryScalarRelationFilter, Prisma.CountryWhereInput>
   branches?: Prisma.BranchCompanyListRelationFilter
 }, "id">
@@ -251,8 +251,8 @@ export type CompanyOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
   countryId?: Prisma.SortOrder
   name_company?: Prisma.SortOrder
-  created_at?: Prisma.SortOrder
-  updated_at?: Prisma.SortOrder
+  createdAt?: Prisma.SortOrder
+  updatedAt?: Prisma.SortOrder
   _count?: Prisma.CompanyCountOrderByAggregateInput
   _avg?: Prisma.CompanyAvgOrderByAggregateInput
   _max?: Prisma.CompanyMaxOrderByAggregateInput
@@ -267,14 +267,14 @@ export type CompanyScalarWhereWithAggregatesInput = {
   id?: Prisma.IntWithAggregatesFilter<"Company"> | number
   countryId?: Prisma.IntWithAggregatesFilter<"Company"> | number
   name_company?: Prisma.StringWithAggregatesFilter<"Company"> | string
-  created_at?: Prisma.DateTimeWithAggregatesFilter<"Company"> | Date | string
-  updated_at?: Prisma.DateTimeWithAggregatesFilter<"Company"> | Date | string
+  createdAt?: Prisma.DateTimeWithAggregatesFilter<"Company"> | Date | string
+  updatedAt?: Prisma.DateTimeWithAggregatesFilter<"Company"> | Date | string
 }
 
 export type CompanyCreateInput = {
   name_company: string
-  created_at?: Date | string
-  updated_at?: Date | string
+  createdAt?: Date | string
+  updatedAt?: Date | string
   country: Prisma.CountryCreateNestedOneWithoutCompaniesInput
   branches?: Prisma.BranchCompanyCreateNestedManyWithoutCompanyInput
 }
@@ -283,15 +283,15 @@ export type CompanyUncheckedCreateInput = {
   id?: number
   countryId: number
   name_company: string
-  created_at?: Date | string
-  updated_at?: Date | string
+  createdAt?: Date | string
+  updatedAt?: Date | string
   branches?: Prisma.BranchCompanyUncheckedCreateNestedManyWithoutCompanyInput
 }
 
 export type CompanyUpdateInput = {
   name_company?: Prisma.StringFieldUpdateOperationsInput | string
-  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   country?: Prisma.CountryUpdateOneRequiredWithoutCompaniesNestedInput
   branches?: Prisma.BranchCompanyUpdateManyWithoutCompanyNestedInput
 }
@@ -300,8 +300,8 @@ export type CompanyUncheckedUpdateInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
   countryId?: Prisma.IntFieldUpdateOperationsInput | number
   name_company?: Prisma.StringFieldUpdateOperationsInput | string
-  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   branches?: Prisma.BranchCompanyUncheckedUpdateManyWithoutCompanyNestedInput
 }
 
@@ -309,22 +309,22 @@ export type CompanyCreateManyInput = {
   id?: number
   countryId: number
   name_company: string
-  created_at?: Date | string
-  updated_at?: Date | string
+  createdAt?: Date | string
+  updatedAt?: Date | string
 }
 
 export type CompanyUpdateManyMutationInput = {
   name_company?: Prisma.StringFieldUpdateOperationsInput | string
-  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type CompanyUncheckedUpdateManyInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
   countryId?: Prisma.IntFieldUpdateOperationsInput | number
   name_company?: Prisma.StringFieldUpdateOperationsInput | string
-  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type CompanyListRelationFilter = {
@@ -341,8 +341,8 @@ export type CompanyCountOrderByAggregateInput = {
   id?: Prisma.SortOrder
   countryId?: Prisma.SortOrder
   name_company?: Prisma.SortOrder
-  created_at?: Prisma.SortOrder
-  updated_at?: Prisma.SortOrder
+  createdAt?: Prisma.SortOrder
+  updatedAt?: Prisma.SortOrder
 }
 
 export type CompanyAvgOrderByAggregateInput = {
@@ -354,16 +354,16 @@ export type CompanyMaxOrderByAggregateInput = {
   id?: Prisma.SortOrder
   countryId?: Prisma.SortOrder
   name_company?: Prisma.SortOrder
-  created_at?: Prisma.SortOrder
-  updated_at?: Prisma.SortOrder
+  createdAt?: Prisma.SortOrder
+  updatedAt?: Prisma.SortOrder
 }
 
 export type CompanyMinOrderByAggregateInput = {
   id?: Prisma.SortOrder
   countryId?: Prisma.SortOrder
   name_company?: Prisma.SortOrder
-  created_at?: Prisma.SortOrder
-  updated_at?: Prisma.SortOrder
+  createdAt?: Prisma.SortOrder
+  updatedAt?: Prisma.SortOrder
 }
 
 export type CompanySumOrderByAggregateInput = {
@@ -434,16 +434,16 @@ export type CompanyUpdateOneRequiredWithoutBranchesNestedInput = {
 
 export type CompanyCreateWithoutCountryInput = {
   name_company: string
-  created_at?: Date | string
-  updated_at?: Date | string
+  createdAt?: Date | string
+  updatedAt?: Date | string
   branches?: Prisma.BranchCompanyCreateNestedManyWithoutCompanyInput
 }
 
 export type CompanyUncheckedCreateWithoutCountryInput = {
   id?: number
   name_company: string
-  created_at?: Date | string
-  updated_at?: Date | string
+  createdAt?: Date | string
+  updatedAt?: Date | string
   branches?: Prisma.BranchCompanyUncheckedCreateNestedManyWithoutCompanyInput
 }
 
@@ -480,14 +480,14 @@ export type CompanyScalarWhereInput = {
   id?: Prisma.IntFilter<"Company"> | number
   countryId?: Prisma.IntFilter<"Company"> | number
   name_company?: Prisma.StringFilter<"Company"> | string
-  created_at?: Prisma.DateTimeFilter<"Company"> | Date | string
-  updated_at?: Prisma.DateTimeFilter<"Company"> | Date | string
+  createdAt?: Prisma.DateTimeFilter<"Company"> | Date | string
+  updatedAt?: Prisma.DateTimeFilter<"Company"> | Date | string
 }
 
 export type CompanyCreateWithoutBranchesInput = {
   name_company: string
-  created_at?: Date | string
-  updated_at?: Date | string
+  createdAt?: Date | string
+  updatedAt?: Date | string
   country: Prisma.CountryCreateNestedOneWithoutCompaniesInput
 }
 
@@ -495,8 +495,8 @@ export type CompanyUncheckedCreateWithoutBranchesInput = {
   id?: number
   countryId: number
   name_company: string
-  created_at?: Date | string
-  updated_at?: Date | string
+  createdAt?: Date | string
+  updatedAt?: Date | string
 }
 
 export type CompanyCreateOrConnectWithoutBranchesInput = {
@@ -517,8 +517,8 @@ export type CompanyUpdateToOneWithWhereWithoutBranchesInput = {
 
 export type CompanyUpdateWithoutBranchesInput = {
   name_company?: Prisma.StringFieldUpdateOperationsInput | string
-  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   country?: Prisma.CountryUpdateOneRequiredWithoutCompaniesNestedInput
 }
 
@@ -526,37 +526,37 @@ export type CompanyUncheckedUpdateWithoutBranchesInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
   countryId?: Prisma.IntFieldUpdateOperationsInput | number
   name_company?: Prisma.StringFieldUpdateOperationsInput | string
-  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type CompanyCreateManyCountryInput = {
   id?: number
   name_company: string
-  created_at?: Date | string
-  updated_at?: Date | string
+  createdAt?: Date | string
+  updatedAt?: Date | string
 }
 
 export type CompanyUpdateWithoutCountryInput = {
   name_company?: Prisma.StringFieldUpdateOperationsInput | string
-  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   branches?: Prisma.BranchCompanyUpdateManyWithoutCompanyNestedInput
 }
 
 export type CompanyUncheckedUpdateWithoutCountryInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
   name_company?: Prisma.StringFieldUpdateOperationsInput | string
-  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   branches?: Prisma.BranchCompanyUncheckedUpdateManyWithoutCompanyNestedInput
 }
 
 export type CompanyUncheckedUpdateManyWithoutCountryInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
   name_company?: Prisma.StringFieldUpdateOperationsInput | string
-  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 
@@ -594,8 +594,8 @@ export type CompanySelect<ExtArgs extends runtime.Types.Extensions.InternalArgs 
   id?: boolean
   countryId?: boolean
   name_company?: boolean
-  created_at?: boolean
-  updated_at?: boolean
+  createdAt?: boolean
+  updatedAt?: boolean
   country?: boolean | Prisma.CountryDefaultArgs<ExtArgs>
   branches?: boolean | Prisma.Company$branchesArgs<ExtArgs>
   _count?: boolean | Prisma.CompanyCountOutputTypeDefaultArgs<ExtArgs>
@@ -605,8 +605,8 @@ export type CompanySelectCreateManyAndReturn<ExtArgs extends runtime.Types.Exten
   id?: boolean
   countryId?: boolean
   name_company?: boolean
-  created_at?: boolean
-  updated_at?: boolean
+  createdAt?: boolean
+  updatedAt?: boolean
   country?: boolean | Prisma.CountryDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["company"]>
 
@@ -614,8 +614,8 @@ export type CompanySelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Exten
   id?: boolean
   countryId?: boolean
   name_company?: boolean
-  created_at?: boolean
-  updated_at?: boolean
+  createdAt?: boolean
+  updatedAt?: boolean
   country?: boolean | Prisma.CountryDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["company"]>
 
@@ -623,11 +623,11 @@ export type CompanySelectScalar = {
   id?: boolean
   countryId?: boolean
   name_company?: boolean
-  created_at?: boolean
-  updated_at?: boolean
+  createdAt?: boolean
+  updatedAt?: boolean
 }
 
-export type CompanyOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "countryId" | "name_company" | "created_at" | "updated_at", ExtArgs["result"]["company"]>
+export type CompanyOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "countryId" | "name_company" | "createdAt" | "updatedAt", ExtArgs["result"]["company"]>
 export type CompanyInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   country?: boolean | Prisma.CountryDefaultArgs<ExtArgs>
   branches?: boolean | Prisma.Company$branchesArgs<ExtArgs>
@@ -650,8 +650,8 @@ export type $CompanyPayload<ExtArgs extends runtime.Types.Extensions.InternalArg
     id: number
     countryId: number
     name_company: string
-    created_at: Date
-    updated_at: Date
+    createdAt: Date
+    updatedAt: Date
   }, ExtArgs["result"]["company"]>
   composites: {}
 }
@@ -1080,8 +1080,8 @@ export interface CompanyFieldRefs {
   readonly id: Prisma.FieldRef<"Company", 'Int'>
   readonly countryId: Prisma.FieldRef<"Company", 'Int'>
   readonly name_company: Prisma.FieldRef<"Company", 'String'>
-  readonly created_at: Prisma.FieldRef<"Company", 'DateTime'>
-  readonly updated_at: Prisma.FieldRef<"Company", 'DateTime'>
+  readonly createdAt: Prisma.FieldRef<"Company", 'DateTime'>
+  readonly updatedAt: Prisma.FieldRef<"Company", 'DateTime'>
 }
     
 

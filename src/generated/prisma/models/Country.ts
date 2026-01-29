@@ -37,22 +37,22 @@ export type CountrySumAggregateOutputType = {
 export type CountryMinAggregateOutputType = {
   id: number | null
   name_country: string | null
-  created_at: Date | null
-  updated_at: Date | null
+  createdAt: Date | null
+  updatedAt: Date | null
 }
 
 export type CountryMaxAggregateOutputType = {
   id: number | null
   name_country: string | null
-  created_at: Date | null
-  updated_at: Date | null
+  createdAt: Date | null
+  updatedAt: Date | null
 }
 
 export type CountryCountAggregateOutputType = {
   id: number
   name_country: number
-  created_at: number
-  updated_at: number
+  createdAt: number
+  updatedAt: number
   _all: number
 }
 
@@ -68,22 +68,22 @@ export type CountrySumAggregateInputType = {
 export type CountryMinAggregateInputType = {
   id?: true
   name_country?: true
-  created_at?: true
-  updated_at?: true
+  createdAt?: true
+  updatedAt?: true
 }
 
 export type CountryMaxAggregateInputType = {
   id?: true
   name_country?: true
-  created_at?: true
-  updated_at?: true
+  createdAt?: true
+  updatedAt?: true
 }
 
 export type CountryCountAggregateInputType = {
   id?: true
   name_country?: true
-  created_at?: true
-  updated_at?: true
+  createdAt?: true
+  updatedAt?: true
   _all?: true
 }
 
@@ -176,8 +176,8 @@ export type CountryGroupByArgs<ExtArgs extends runtime.Types.Extensions.Internal
 export type CountryGroupByOutputType = {
   id: number
   name_country: string
-  created_at: Date
-  updated_at: Date
+  createdAt: Date
+  updatedAt: Date
   _count: CountryCountAggregateOutputType | null
   _avg: CountryAvgAggregateOutputType | null
   _sum: CountrySumAggregateOutputType | null
@@ -206,16 +206,16 @@ export type CountryWhereInput = {
   NOT?: Prisma.CountryWhereInput | Prisma.CountryWhereInput[]
   id?: Prisma.IntFilter<"Country"> | number
   name_country?: Prisma.StringFilter<"Country"> | string
-  created_at?: Prisma.DateTimeFilter<"Country"> | Date | string
-  updated_at?: Prisma.DateTimeFilter<"Country"> | Date | string
+  createdAt?: Prisma.DateTimeFilter<"Country"> | Date | string
+  updatedAt?: Prisma.DateTimeFilter<"Country"> | Date | string
   companies?: Prisma.CompanyListRelationFilter
 }
 
 export type CountryOrderByWithRelationInput = {
   id?: Prisma.SortOrder
   name_country?: Prisma.SortOrder
-  created_at?: Prisma.SortOrder
-  updated_at?: Prisma.SortOrder
+  createdAt?: Prisma.SortOrder
+  updatedAt?: Prisma.SortOrder
   companies?: Prisma.CompanyOrderByRelationAggregateInput
 }
 
@@ -225,16 +225,16 @@ export type CountryWhereUniqueInput = Prisma.AtLeast<{
   OR?: Prisma.CountryWhereInput[]
   NOT?: Prisma.CountryWhereInput | Prisma.CountryWhereInput[]
   name_country?: Prisma.StringFilter<"Country"> | string
-  created_at?: Prisma.DateTimeFilter<"Country"> | Date | string
-  updated_at?: Prisma.DateTimeFilter<"Country"> | Date | string
+  createdAt?: Prisma.DateTimeFilter<"Country"> | Date | string
+  updatedAt?: Prisma.DateTimeFilter<"Country"> | Date | string
   companies?: Prisma.CompanyListRelationFilter
 }, "id">
 
 export type CountryOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
   name_country?: Prisma.SortOrder
-  created_at?: Prisma.SortOrder
-  updated_at?: Prisma.SortOrder
+  createdAt?: Prisma.SortOrder
+  updatedAt?: Prisma.SortOrder
   _count?: Prisma.CountryCountOrderByAggregateInput
   _avg?: Prisma.CountryAvgOrderByAggregateInput
   _max?: Prisma.CountryMaxOrderByAggregateInput
@@ -248,65 +248,65 @@ export type CountryScalarWhereWithAggregatesInput = {
   NOT?: Prisma.CountryScalarWhereWithAggregatesInput | Prisma.CountryScalarWhereWithAggregatesInput[]
   id?: Prisma.IntWithAggregatesFilter<"Country"> | number
   name_country?: Prisma.StringWithAggregatesFilter<"Country"> | string
-  created_at?: Prisma.DateTimeWithAggregatesFilter<"Country"> | Date | string
-  updated_at?: Prisma.DateTimeWithAggregatesFilter<"Country"> | Date | string
+  createdAt?: Prisma.DateTimeWithAggregatesFilter<"Country"> | Date | string
+  updatedAt?: Prisma.DateTimeWithAggregatesFilter<"Country"> | Date | string
 }
 
 export type CountryCreateInput = {
   name_country: string
-  created_at?: Date | string
-  updated_at?: Date | string
+  createdAt?: Date | string
+  updatedAt?: Date | string
   companies?: Prisma.CompanyCreateNestedManyWithoutCountryInput
 }
 
 export type CountryUncheckedCreateInput = {
   id?: number
   name_country: string
-  created_at?: Date | string
-  updated_at?: Date | string
+  createdAt?: Date | string
+  updatedAt?: Date | string
   companies?: Prisma.CompanyUncheckedCreateNestedManyWithoutCountryInput
 }
 
 export type CountryUpdateInput = {
   name_country?: Prisma.StringFieldUpdateOperationsInput | string
-  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   companies?: Prisma.CompanyUpdateManyWithoutCountryNestedInput
 }
 
 export type CountryUncheckedUpdateInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
   name_country?: Prisma.StringFieldUpdateOperationsInput | string
-  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   companies?: Prisma.CompanyUncheckedUpdateManyWithoutCountryNestedInput
 }
 
 export type CountryCreateManyInput = {
   id?: number
   name_country: string
-  created_at?: Date | string
-  updated_at?: Date | string
+  createdAt?: Date | string
+  updatedAt?: Date | string
 }
 
 export type CountryUpdateManyMutationInput = {
   name_country?: Prisma.StringFieldUpdateOperationsInput | string
-  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type CountryUncheckedUpdateManyInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
   name_country?: Prisma.StringFieldUpdateOperationsInput | string
-  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type CountryCountOrderByAggregateInput = {
   id?: Prisma.SortOrder
   name_country?: Prisma.SortOrder
-  created_at?: Prisma.SortOrder
-  updated_at?: Prisma.SortOrder
+  createdAt?: Prisma.SortOrder
+  updatedAt?: Prisma.SortOrder
 }
 
 export type CountryAvgOrderByAggregateInput = {
@@ -316,15 +316,15 @@ export type CountryAvgOrderByAggregateInput = {
 export type CountryMaxOrderByAggregateInput = {
   id?: Prisma.SortOrder
   name_country?: Prisma.SortOrder
-  created_at?: Prisma.SortOrder
-  updated_at?: Prisma.SortOrder
+  createdAt?: Prisma.SortOrder
+  updatedAt?: Prisma.SortOrder
 }
 
 export type CountryMinOrderByAggregateInput = {
   id?: Prisma.SortOrder
   name_country?: Prisma.SortOrder
-  created_at?: Prisma.SortOrder
-  updated_at?: Prisma.SortOrder
+  createdAt?: Prisma.SortOrder
+  updatedAt?: Prisma.SortOrder
 }
 
 export type CountrySumOrderByAggregateInput = {
@@ -352,15 +352,15 @@ export type CountryUpdateOneRequiredWithoutCompaniesNestedInput = {
 
 export type CountryCreateWithoutCompaniesInput = {
   name_country: string
-  created_at?: Date | string
-  updated_at?: Date | string
+  createdAt?: Date | string
+  updatedAt?: Date | string
 }
 
 export type CountryUncheckedCreateWithoutCompaniesInput = {
   id?: number
   name_country: string
-  created_at?: Date | string
-  updated_at?: Date | string
+  createdAt?: Date | string
+  updatedAt?: Date | string
 }
 
 export type CountryCreateOrConnectWithoutCompaniesInput = {
@@ -381,15 +381,15 @@ export type CountryUpdateToOneWithWhereWithoutCompaniesInput = {
 
 export type CountryUpdateWithoutCompaniesInput = {
   name_country?: Prisma.StringFieldUpdateOperationsInput | string
-  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type CountryUncheckedUpdateWithoutCompaniesInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
   name_country?: Prisma.StringFieldUpdateOperationsInput | string
-  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 
@@ -426,8 +426,8 @@ export type CountryCountOutputTypeCountCompaniesArgs<ExtArgs extends runtime.Typ
 export type CountrySelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
   name_country?: boolean
-  created_at?: boolean
-  updated_at?: boolean
+  createdAt?: boolean
+  updatedAt?: boolean
   companies?: boolean | Prisma.Country$companiesArgs<ExtArgs>
   _count?: boolean | Prisma.CountryCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["country"]>
@@ -435,25 +435,25 @@ export type CountrySelect<ExtArgs extends runtime.Types.Extensions.InternalArgs 
 export type CountrySelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
   name_country?: boolean
-  created_at?: boolean
-  updated_at?: boolean
+  createdAt?: boolean
+  updatedAt?: boolean
 }, ExtArgs["result"]["country"]>
 
 export type CountrySelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
   name_country?: boolean
-  created_at?: boolean
-  updated_at?: boolean
+  createdAt?: boolean
+  updatedAt?: boolean
 }, ExtArgs["result"]["country"]>
 
 export type CountrySelectScalar = {
   id?: boolean
   name_country?: boolean
-  created_at?: boolean
-  updated_at?: boolean
+  createdAt?: boolean
+  updatedAt?: boolean
 }
 
-export type CountryOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "name_country" | "created_at" | "updated_at", ExtArgs["result"]["country"]>
+export type CountryOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "name_country" | "createdAt" | "updatedAt", ExtArgs["result"]["country"]>
 export type CountryInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   companies?: boolean | Prisma.Country$companiesArgs<ExtArgs>
   _count?: boolean | Prisma.CountryCountOutputTypeDefaultArgs<ExtArgs>
@@ -469,8 +469,8 @@ export type $CountryPayload<ExtArgs extends runtime.Types.Extensions.InternalArg
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: number
     name_country: string
-    created_at: Date
-    updated_at: Date
+    createdAt: Date
+    updatedAt: Date
   }, ExtArgs["result"]["country"]>
   composites: {}
 }
@@ -897,8 +897,8 @@ export interface Prisma__CountryClient<T, Null = never, ExtArgs extends runtime.
 export interface CountryFieldRefs {
   readonly id: Prisma.FieldRef<"Country", 'Int'>
   readonly name_country: Prisma.FieldRef<"Country", 'String'>
-  readonly created_at: Prisma.FieldRef<"Country", 'DateTime'>
-  readonly updated_at: Prisma.FieldRef<"Country", 'DateTime'>
+  readonly createdAt: Prisma.FieldRef<"Country", 'DateTime'>
+  readonly updatedAt: Prisma.FieldRef<"Country", 'DateTime'>
 }
     
 

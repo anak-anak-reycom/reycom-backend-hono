@@ -44,8 +44,8 @@ export type BranchCompanyMinAggregateOutputType = {
   phone: string | null
   email: string | null
   website: string | null
-  created_at: Date | null
-  updated_at: Date | null
+  createdAt: Date | null
+  updatedAt: Date | null
 }
 
 export type BranchCompanyMaxAggregateOutputType = {
@@ -56,8 +56,8 @@ export type BranchCompanyMaxAggregateOutputType = {
   phone: string | null
   email: string | null
   website: string | null
-  created_at: Date | null
-  updated_at: Date | null
+  createdAt: Date | null
+  updatedAt: Date | null
 }
 
 export type BranchCompanyCountAggregateOutputType = {
@@ -68,8 +68,8 @@ export type BranchCompanyCountAggregateOutputType = {
   phone: number
   email: number
   website: number
-  created_at: number
-  updated_at: number
+  createdAt: number
+  updatedAt: number
   _all: number
 }
 
@@ -92,8 +92,8 @@ export type BranchCompanyMinAggregateInputType = {
   phone?: true
   email?: true
   website?: true
-  created_at?: true
-  updated_at?: true
+  createdAt?: true
+  updatedAt?: true
 }
 
 export type BranchCompanyMaxAggregateInputType = {
@@ -104,8 +104,8 @@ export type BranchCompanyMaxAggregateInputType = {
   phone?: true
   email?: true
   website?: true
-  created_at?: true
-  updated_at?: true
+  createdAt?: true
+  updatedAt?: true
 }
 
 export type BranchCompanyCountAggregateInputType = {
@@ -116,8 +116,8 @@ export type BranchCompanyCountAggregateInputType = {
   phone?: true
   email?: true
   website?: true
-  created_at?: true
-  updated_at?: true
+  createdAt?: true
+  updatedAt?: true
   _all?: true
 }
 
@@ -215,8 +215,8 @@ export type BranchCompanyGroupByOutputType = {
   phone: string | null
   email: string | null
   website: string | null
-  created_at: Date
-  updated_at: Date
+  createdAt: Date
+  updatedAt: Date
   _count: BranchCompanyCountAggregateOutputType | null
   _avg: BranchCompanyAvgAggregateOutputType | null
   _sum: BranchCompanySumAggregateOutputType | null
@@ -250,8 +250,8 @@ export type BranchCompanyWhereInput = {
   phone?: Prisma.StringNullableFilter<"BranchCompany"> | string | null
   email?: Prisma.StringNullableFilter<"BranchCompany"> | string | null
   website?: Prisma.StringNullableFilter<"BranchCompany"> | string | null
-  created_at?: Prisma.DateTimeFilter<"BranchCompany"> | Date | string
-  updated_at?: Prisma.DateTimeFilter<"BranchCompany"> | Date | string
+  createdAt?: Prisma.DateTimeFilter<"BranchCompany"> | Date | string
+  updatedAt?: Prisma.DateTimeFilter<"BranchCompany"> | Date | string
   company?: Prisma.XOR<Prisma.CompanyScalarRelationFilter, Prisma.CompanyWhereInput>
 }
 
@@ -263,8 +263,8 @@ export type BranchCompanyOrderByWithRelationInput = {
   phone?: Prisma.SortOrderInput | Prisma.SortOrder
   email?: Prisma.SortOrderInput | Prisma.SortOrder
   website?: Prisma.SortOrderInput | Prisma.SortOrder
-  created_at?: Prisma.SortOrder
-  updated_at?: Prisma.SortOrder
+  createdAt?: Prisma.SortOrder
+  updatedAt?: Prisma.SortOrder
   company?: Prisma.CompanyOrderByWithRelationInput
 }
 
@@ -279,8 +279,8 @@ export type BranchCompanyWhereUniqueInput = Prisma.AtLeast<{
   phone?: Prisma.StringNullableFilter<"BranchCompany"> | string | null
   email?: Prisma.StringNullableFilter<"BranchCompany"> | string | null
   website?: Prisma.StringNullableFilter<"BranchCompany"> | string | null
-  created_at?: Prisma.DateTimeFilter<"BranchCompany"> | Date | string
-  updated_at?: Prisma.DateTimeFilter<"BranchCompany"> | Date | string
+  createdAt?: Prisma.DateTimeFilter<"BranchCompany"> | Date | string
+  updatedAt?: Prisma.DateTimeFilter<"BranchCompany"> | Date | string
   company?: Prisma.XOR<Prisma.CompanyScalarRelationFilter, Prisma.CompanyWhereInput>
 }, "id">
 
@@ -292,8 +292,8 @@ export type BranchCompanyOrderByWithAggregationInput = {
   phone?: Prisma.SortOrderInput | Prisma.SortOrder
   email?: Prisma.SortOrderInput | Prisma.SortOrder
   website?: Prisma.SortOrderInput | Prisma.SortOrder
-  created_at?: Prisma.SortOrder
-  updated_at?: Prisma.SortOrder
+  createdAt?: Prisma.SortOrder
+  updatedAt?: Prisma.SortOrder
   _count?: Prisma.BranchCompanyCountOrderByAggregateInput
   _avg?: Prisma.BranchCompanyAvgOrderByAggregateInput
   _max?: Prisma.BranchCompanyMaxOrderByAggregateInput
@@ -312,8 +312,8 @@ export type BranchCompanyScalarWhereWithAggregatesInput = {
   phone?: Prisma.StringNullableWithAggregatesFilter<"BranchCompany"> | string | null
   email?: Prisma.StringNullableWithAggregatesFilter<"BranchCompany"> | string | null
   website?: Prisma.StringNullableWithAggregatesFilter<"BranchCompany"> | string | null
-  created_at?: Prisma.DateTimeWithAggregatesFilter<"BranchCompany"> | Date | string
-  updated_at?: Prisma.DateTimeWithAggregatesFilter<"BranchCompany"> | Date | string
+  createdAt?: Prisma.DateTimeWithAggregatesFilter<"BranchCompany"> | Date | string
+  updatedAt?: Prisma.DateTimeWithAggregatesFilter<"BranchCompany"> | Date | string
 }
 
 export type BranchCompanyCreateInput = {
@@ -322,8 +322,8 @@ export type BranchCompanyCreateInput = {
   phone?: string | null
   email?: string | null
   website?: string | null
-  created_at?: Date | string
-  updated_at?: Date | string
+  createdAt?: Date | string
+  updatedAt?: Date | string
   company: Prisma.CompanyCreateNestedOneWithoutBranchesInput
 }
 
@@ -335,8 +335,8 @@ export type BranchCompanyUncheckedCreateInput = {
   phone?: string | null
   email?: string | null
   website?: string | null
-  created_at?: Date | string
-  updated_at?: Date | string
+  createdAt?: Date | string
+  updatedAt?: Date | string
 }
 
 export type BranchCompanyUpdateInput = {
@@ -345,8 +345,8 @@ export type BranchCompanyUpdateInput = {
   phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   website?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   company?: Prisma.CompanyUpdateOneRequiredWithoutBranchesNestedInput
 }
 
@@ -358,8 +358,8 @@ export type BranchCompanyUncheckedUpdateInput = {
   phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   website?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type BranchCompanyCreateManyInput = {
@@ -370,8 +370,8 @@ export type BranchCompanyCreateManyInput = {
   phone?: string | null
   email?: string | null
   website?: string | null
-  created_at?: Date | string
-  updated_at?: Date | string
+  createdAt?: Date | string
+  updatedAt?: Date | string
 }
 
 export type BranchCompanyUpdateManyMutationInput = {
@@ -380,8 +380,8 @@ export type BranchCompanyUpdateManyMutationInput = {
   phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   website?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type BranchCompanyUncheckedUpdateManyInput = {
@@ -392,8 +392,8 @@ export type BranchCompanyUncheckedUpdateManyInput = {
   phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   website?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type BranchCompanyListRelationFilter = {
@@ -414,8 +414,8 @@ export type BranchCompanyCountOrderByAggregateInput = {
   phone?: Prisma.SortOrder
   email?: Prisma.SortOrder
   website?: Prisma.SortOrder
-  created_at?: Prisma.SortOrder
-  updated_at?: Prisma.SortOrder
+  createdAt?: Prisma.SortOrder
+  updatedAt?: Prisma.SortOrder
 }
 
 export type BranchCompanyAvgOrderByAggregateInput = {
@@ -431,8 +431,8 @@ export type BranchCompanyMaxOrderByAggregateInput = {
   phone?: Prisma.SortOrder
   email?: Prisma.SortOrder
   website?: Prisma.SortOrder
-  created_at?: Prisma.SortOrder
-  updated_at?: Prisma.SortOrder
+  createdAt?: Prisma.SortOrder
+  updatedAt?: Prisma.SortOrder
 }
 
 export type BranchCompanyMinOrderByAggregateInput = {
@@ -443,8 +443,8 @@ export type BranchCompanyMinOrderByAggregateInput = {
   phone?: Prisma.SortOrder
   email?: Prisma.SortOrder
   website?: Prisma.SortOrder
-  created_at?: Prisma.SortOrder
-  updated_at?: Prisma.SortOrder
+  createdAt?: Prisma.SortOrder
+  updatedAt?: Prisma.SortOrder
 }
 
 export type BranchCompanySumOrderByAggregateInput = {
@@ -500,8 +500,8 @@ export type BranchCompanyCreateWithoutCompanyInput = {
   phone?: string | null
   email?: string | null
   website?: string | null
-  created_at?: Date | string
-  updated_at?: Date | string
+  createdAt?: Date | string
+  updatedAt?: Date | string
 }
 
 export type BranchCompanyUncheckedCreateWithoutCompanyInput = {
@@ -511,8 +511,8 @@ export type BranchCompanyUncheckedCreateWithoutCompanyInput = {
   phone?: string | null
   email?: string | null
   website?: string | null
-  created_at?: Date | string
-  updated_at?: Date | string
+  createdAt?: Date | string
+  updatedAt?: Date | string
 }
 
 export type BranchCompanyCreateOrConnectWithoutCompanyInput = {
@@ -552,8 +552,8 @@ export type BranchCompanyScalarWhereInput = {
   phone?: Prisma.StringNullableFilter<"BranchCompany"> | string | null
   email?: Prisma.StringNullableFilter<"BranchCompany"> | string | null
   website?: Prisma.StringNullableFilter<"BranchCompany"> | string | null
-  created_at?: Prisma.DateTimeFilter<"BranchCompany"> | Date | string
-  updated_at?: Prisma.DateTimeFilter<"BranchCompany"> | Date | string
+  createdAt?: Prisma.DateTimeFilter<"BranchCompany"> | Date | string
+  updatedAt?: Prisma.DateTimeFilter<"BranchCompany"> | Date | string
 }
 
 export type BranchCompanyCreateManyCompanyInput = {
@@ -563,8 +563,8 @@ export type BranchCompanyCreateManyCompanyInput = {
   phone?: string | null
   email?: string | null
   website?: string | null
-  created_at?: Date | string
-  updated_at?: Date | string
+  createdAt?: Date | string
+  updatedAt?: Date | string
 }
 
 export type BranchCompanyUpdateWithoutCompanyInput = {
@@ -573,8 +573,8 @@ export type BranchCompanyUpdateWithoutCompanyInput = {
   phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   website?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type BranchCompanyUncheckedUpdateWithoutCompanyInput = {
@@ -584,8 +584,8 @@ export type BranchCompanyUncheckedUpdateWithoutCompanyInput = {
   phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   website?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type BranchCompanyUncheckedUpdateManyWithoutCompanyInput = {
@@ -595,8 +595,8 @@ export type BranchCompanyUncheckedUpdateManyWithoutCompanyInput = {
   phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   website?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 
@@ -609,8 +609,8 @@ export type BranchCompanySelect<ExtArgs extends runtime.Types.Extensions.Interna
   phone?: boolean
   email?: boolean
   website?: boolean
-  created_at?: boolean
-  updated_at?: boolean
+  createdAt?: boolean
+  updatedAt?: boolean
   company?: boolean | Prisma.CompanyDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["branchCompany"]>
 
@@ -622,8 +622,8 @@ export type BranchCompanySelectCreateManyAndReturn<ExtArgs extends runtime.Types
   phone?: boolean
   email?: boolean
   website?: boolean
-  created_at?: boolean
-  updated_at?: boolean
+  createdAt?: boolean
+  updatedAt?: boolean
   company?: boolean | Prisma.CompanyDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["branchCompany"]>
 
@@ -635,8 +635,8 @@ export type BranchCompanySelectUpdateManyAndReturn<ExtArgs extends runtime.Types
   phone?: boolean
   email?: boolean
   website?: boolean
-  created_at?: boolean
-  updated_at?: boolean
+  createdAt?: boolean
+  updatedAt?: boolean
   company?: boolean | Prisma.CompanyDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["branchCompany"]>
 
@@ -648,11 +648,11 @@ export type BranchCompanySelectScalar = {
   phone?: boolean
   email?: boolean
   website?: boolean
-  created_at?: boolean
-  updated_at?: boolean
+  createdAt?: boolean
+  updatedAt?: boolean
 }
 
-export type BranchCompanyOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "companyId" | "name_branch" | "street_address" | "phone" | "email" | "website" | "created_at" | "updated_at", ExtArgs["result"]["branchCompany"]>
+export type BranchCompanyOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "companyId" | "name_branch" | "street_address" | "phone" | "email" | "website" | "createdAt" | "updatedAt", ExtArgs["result"]["branchCompany"]>
 export type BranchCompanyInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   company?: boolean | Prisma.CompanyDefaultArgs<ExtArgs>
 }
@@ -676,8 +676,8 @@ export type $BranchCompanyPayload<ExtArgs extends runtime.Types.Extensions.Inter
     phone: string | null
     email: string | null
     website: string | null
-    created_at: Date
-    updated_at: Date
+    createdAt: Date
+    updatedAt: Date
   }, ExtArgs["result"]["branchCompany"]>
   composites: {}
 }
@@ -1109,8 +1109,8 @@ export interface BranchCompanyFieldRefs {
   readonly phone: Prisma.FieldRef<"BranchCompany", 'String'>
   readonly email: Prisma.FieldRef<"BranchCompany", 'String'>
   readonly website: Prisma.FieldRef<"BranchCompany", 'String'>
-  readonly created_at: Prisma.FieldRef<"BranchCompany", 'DateTime'>
-  readonly updated_at: Prisma.FieldRef<"BranchCompany", 'DateTime'>
+  readonly createdAt: Prisma.FieldRef<"BranchCompany", 'DateTime'>
+  readonly updatedAt: Prisma.FieldRef<"BranchCompany", 'DateTime'>
 }
     
 

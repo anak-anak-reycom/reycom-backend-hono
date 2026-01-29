@@ -108,8 +108,8 @@ model Country {
   id           Int      @id @default(autoincrement())
   name_country String   // Indonesia, Singapore, Vietnam
   companies    Company[]
-  created_at   DateTime @default(now())
-  updated_at   DateTime @updatedAt
+  createdAt    DateTime @default(now())
+  updatedAt   DateTime @updatedAt
 
   @@map("countries")
 }
@@ -120,8 +120,8 @@ model Company {
   name_company String   // PT Reycom..., PTE LTD, CO.LTD
   country      Country  @relation(fields: [countryId], references: [id])
   branches     BranchCompany[]
-  created_at   DateTime @default(now())
-  updated_at   DateTime @updatedAt
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
 
   @@map("companies")
 }
@@ -135,8 +135,8 @@ model BranchCompany {
   email          String?
   website        String?
   company        Company  @relation(fields: [companyId], references: [id])
-  created_at     DateTime @default(now())
-  updated_at     DateTime @updatedAt
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
 
   @@map("branch_companies")
 }

@@ -1374,8 +1374,8 @@ export type NewsCarouselScalarFieldEnum = (typeof NewsCarouselScalarFieldEnum)[k
 export const CountryScalarFieldEnum = {
   id: 'id',
   name_country: 'name_country',
-  created_at: 'created_at',
-  updated_at: 'updated_at'
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
 } as const
 
 export type CountryScalarFieldEnum = (typeof CountryScalarFieldEnum)[keyof typeof CountryScalarFieldEnum]
@@ -1385,8 +1385,8 @@ export const CompanyScalarFieldEnum = {
   id: 'id',
   countryId: 'countryId',
   name_company: 'name_company',
-  created_at: 'created_at',
-  updated_at: 'updated_at'
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
 } as const
 
 export type CompanyScalarFieldEnum = (typeof CompanyScalarFieldEnum)[keyof typeof CompanyScalarFieldEnum]
@@ -1400,8 +1400,8 @@ export const BranchCompanyScalarFieldEnum = {
   phone: 'phone',
   email: 'email',
   website: 'website',
-  created_at: 'created_at',
-  updated_at: 'updated_at'
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
 } as const
 
 export type BranchCompanyScalarFieldEnum = (typeof BranchCompanyScalarFieldEnum)[keyof typeof BranchCompanyScalarFieldEnum]

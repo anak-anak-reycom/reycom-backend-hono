@@ -1,4 +1,4 @@
-import type { Country } from "../../generated/prisma/client.js"
+import type { BranchCompany, Company, Country } from "../../generated/prisma/client.js"
 
 import type { Category, Careers } from "../../generated/prisma/client.js";
 
@@ -18,70 +18,97 @@ export type CreateCountryRequest = {
    DATA RESPONSE
 ======================= */
 
-export type CareerData = {
-    id: number;
-    job_name: string;
-    job_date: Date;
+export type BranchCompanyData = {
+  id: number;
+  name_branch: string;
+  street_address?: string | null;
+  phone?: string | null;
+  email?: string | null;
+  website?: string | null;
 };
 
-export type CategoryData = {
-    id_category: number;
-    name_category: string;
-    job_type: string;
-    careers?: CareerData[];   
-    created_at?: Date;
-    updated_at?: Date;
+export type CompanyData = {
+  id: number;
+  name_company: string;
+  branches: BranchCompanyData[];
+};
+
+export type CountryData = {
+  id: number;
+  name_country: string;
+  companies: CompanyData[];
 };
 
 /* =======================
    API RESPONSE WRAPPER
 ======================= */
+
 export type ApiResponse<T> = {
-    message: string;
-    data: T;
+  message: string;
+  data: T;
 };
+
 
 /* =======================
    MAPPERS
 ======================= */
 
-function toCareerData(career: Careers): CareerData {
-    return {
-        id: career.id,
-        job_name: career.job_name,
-        job_date: career.job_date,
-    };
+function toBranchCompanyData(branch: BranchCompany): BranchCompanyData {
+  return {
+    id: branch.id,
+    name_branch: branch.name_branch,
+    street_address: branch.street_address,
+    phone: branch.phone,
+    email: branch.email,
+    website: branch.website,
+  };
 }
 
-export function toCategoryData(
-    category: Category & { careers?: Careers[] }
-): CategoryData {
-    return {
-        id_category: category.id,
-        name_category: category.name_category,
-        job_type: category.job_type,
-        careers: category.careers?.map(toCareerData),
-        created_at: category.created_at,
-        updated_at: category.updated_at,
-    };
+function toCompanyData(
+  company: Company & { branches?: BranchCompany[] }
+): CompanyData {
+  return {
+    id: company.id,
+    name_company: company.name_company,
+    branches: company.branches?.map(toBranchCompanyData) ?? [],
+  };
 }
 
-export function toCategoryResponse(
-    category: Category & { careers?: Careers[] },
-    message: string
-): ApiResponse<CategoryData> {
-    return {
-        message,
-        data: toCategoryData(category),
-    };
+export function toCountryData(
+  country: Country & {
+    companies?: (Company & { branches?: BranchCompany[] })[];
+  }
+): CountryData {
+  return {
+    id: country.id,
+    name_country: country.name_country,
+    companies: country.companies?.map(toCompanyData) ?? [],
+  };
 }
 
-export function toModelListResponse(
-    categories: (Category & { careers?: Careers[] })[],
-    message: string
-): ApiResponse<CategoryData[]> {
-    return {
-        message,
-        data: categories.map(toCategoryData),
-    };
+/* =======================
+   RESPONSE WRAPPERS
+======================= */
+export function toCountryResponse(
+  country: Country & {
+    companies?: (Company & { branches?: BranchCompany[] })[];
+  },
+  message: string
+): ApiResponse<CountryData> {
+  return {
+    message,
+    data: toCountryData(country),
+  };
 }
+
+export function toModelListResponse<T, U>(
+  items: T[],
+  message: string,  
+    mapper: (item: T) => U = (item) => item as unknown as U
+): ApiResponse<U[]> {
+  return {
+    message,
+    data: items.map(mapper),
+  };
+}
+
