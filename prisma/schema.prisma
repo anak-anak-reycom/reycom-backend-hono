@@ -70,7 +70,6 @@ model Contacts {
 
   @@map("contacts")
 }
-
 model Videos {
   id          Int      @id @default(autoincrement())
   title_video String

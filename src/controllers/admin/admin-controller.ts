@@ -28,7 +28,11 @@ AdminController.post('/admin', withPrisma, async (c) => {
   const raw = await safeJson(c);
   const validated = adminValidation.CREATE.parse(raw);
 
-  const response = await AdminService.CreateAdmin(prisma, validated);
+  const response = await AdminService.CreateAdmin(prisma, {
+    name_admin: validated.nameAdmin,
+    email: validated.emailAdmin,
+    password: validated.passwordAdmin,
+  });
   return c.json(response, 201);
 });
 
@@ -92,7 +96,12 @@ AdminController.patch('/admin/:id', authAdminMiddleware, withPrisma, async (c) =
     });
   }
 
-  const response = await AdminService.UpdateAdminById(prisma, id, validated);
+  const updateData: any = {};
+  if (validated.nameAdmin !== undefined) updateData.name_admin = validated.nameAdmin;
+  if (validated.emailAdmin !== undefined) updateData.email = validated.emailAdmin;
+  if (validated.passwordAdmin !== undefined) updateData.password = validated.passwordAdmin;
+
+  const response = await AdminService.UpdateAdminById(prisma, id, updateData);
   return c.json(response, 200);
 });
 
@@ -105,7 +114,10 @@ AdminController.post('/admin/login', withPrisma, async (c) => {
   const raw = await safeJson(c);
   const validated = adminValidation.LOGIN.parse(raw);
 
-  const response = await AdminService.LoginAdmin(prisma, validated);
+  const response = await AdminService.LoginAdmin(prisma, {
+    name_admin: validated.nameAdmin,
+    password: validated.passwordAdmin,
+  });
   return c.json(response, 200);
 });
 

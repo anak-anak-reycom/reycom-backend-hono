@@ -4,30 +4,30 @@ import type { Admin } from "../../generated/prisma/client.js";
    REQUEST
 ======================= */
 export type CreateAdminRequest = {
-    name_admin: string;
-    email: string;
-    password: string;
+    nameAdmin: string;
+    emailAdmin: string;
+    passwordAdmin: string;
 };
 
 export type LoginAdminRequest = {
-    name_admin: string;
-    password: string;
+    nameAdminn: string;
+    passwordAdmin: string;
 };
 
 export type LogoutAdminRequest = {
-    id_admin: number;
+    idAdmin: number;
 };
 
 /* =======================
    DATA RESPONSE
 ======================= */
 export type AdminData = {
-    id_admin: number;
-    name_admin: string;
-    email: string;
+    idAdmin: number;
+    nameAdmin: string;
+    emailAdmin: string;
     token?: string;
-    created_at?: Date;
-    updated_at?: Date;
+    createdAt?: Date;
+    updatedAt?: Date;
 };
 
 /* =======================
@@ -43,12 +43,12 @@ export function toAdminData(
     token?: string
 ): AdminData {
     return {
-        id_admin: admin.id,
-        name_admin: admin.name_admin,
-        email: admin.email,
+        idAdmin: admin.id,
+        nameAdmin: admin.name_admin,
+        emailAdmin: admin.email,
         token,
-        created_at: admin.created_at,
-        updated_at: admin.updated_at,
+        createdAt: admin.created_at,
+        updatedAt: admin.updated_at,
     };
 }
 export function toAdminListResponse(

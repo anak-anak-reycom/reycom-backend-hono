@@ -3,7 +3,7 @@ import withPrisma from "../../lib/prisma.js";
 import { CareerService } from "../../services/carrer/carrer-service.js";
 import { HTTPException } from "hono/http-exception";
 import type { ContextWithPrisma } from "../../types/context.js";
-import { carrerValidation } from "../../validations/carrer/carrer-validation.js";
+import { carrerValidation } from "../../validations/career/carrer-validation.js";
 
 export const CareerController = new Hono<ContextWithPrisma>();
 
@@ -24,12 +24,16 @@ CareerController.post("/career", withPrisma, async (c) => {
   const prisma = c.get("prisma");
   const raw = await safeJson(c);
 
-  const validated = carrerValidation.CREATE.parse(raw)
+  const validated = carrerValidation.CREATE.parse(raw);
 
-  const response = await CareerService.CreateCareer(prisma, validated)
+  const response = await CareerService.CreateCareer(prisma, {
+    job_name: validated.jobName,
+    categoryId: validated.categoryId, 
+  });
 
   return c.json(response, 201);
 });
+
 
 // ===============================
 // GET ALL CAREERS
@@ -58,28 +62,25 @@ CareerController.get("/career/:id", withPrisma, async (c) => {
 // ===============================
 // UPDATE CAREER
 // ===============================
-CareerController.patch("/career/:id", withPrisma, async (c) => {
-  const prisma = c.get("prisma");
-  const id = Number(c.req.param("id"));
-  const raw = await safeJson(c);
+CareerController.patch('/career/:id', withPrisma, async (c) => {
+  const prisma = c.get('prisma');
+  const id = Number(c.req.param('id'));
 
   if (Number.isNaN(id)) {
-    throw new HTTPException(400, { message: "Invalid career id" });
+    throw new HTTPException(400, { message: 'Invalid career id' });
   }
 
-  if (!raw.job_name && !raw.categoryId) {
-    throw new HTTPException(400, {
-      message: "Minimum one field is required to update career",
-    });
-  }
+  const raw = await safeJson(c);
+  const validated = carrerValidation.UPDATE.parse(raw);
 
   const response = await CareerService.UpdateCareerById(prisma, id, {
-    job_name: raw.job_name,
-    categoryId: raw.categoryId,
+    job_name: validated.jobName,
+    categoryId: validated.categoryId,
   });
 
   return c.json(response, 200);
 });
+
 
 // ===============================
 // DELETE CAREER

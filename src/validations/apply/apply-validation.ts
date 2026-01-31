@@ -2,21 +2,21 @@ import { z } from 'zod';
 
 export class applyValidation {
 static readonly CREATE = z.object({
-  name_apply: z.preprocess(
+  nameApply: z.preprocess(
     (v) => (v == null ? '' : v),
     z.string()
       .min(1, 'Name must be at least 1 character long')
       .max(50, 'Name maximum 50 characters'),
   ),
 
-  email: z.preprocess(
+  emailApply: z.preprocess(
     (v) => (v == null ? '' : v),
     z.string()
       .min(1, 'Email is required')
       .email('Email format is invalid'),
   ),
 
-  no_hp: z.preprocess(
+  phoneNumberApply: z.preprocess(
     (v) => (v == null ? '' : v),
     z.string().min(10, 'Phone Number must be at least 10 digits'),
   ),
@@ -40,7 +40,7 @@ static readonly CREATE = z.object({
 
 
 static readonly UPDATE = z.object({
-  name_apply: z.preprocess(
+  nameApply: z.preprocess(
     (v) => (v == null ? undefined : v),
     z.string()
       .min(1, 'Name must be at least 1 character long')
@@ -48,14 +48,14 @@ static readonly UPDATE = z.object({
       .optional(),
   ),
 
-  email: z.preprocess(
+  emailApply: z.preprocess(
     (v) => (v == null ? undefined : v),
     z.string()
       .email('Email format is invalid')
       .optional(),
   ),
 
-  no_hp: z.preprocess(
+  phoneNumberApply: z.preprocess(
     (v) => (v == null ? undefined : v),
     z.string()
       .min(10, 'Phone Number must be at least 10 digits')

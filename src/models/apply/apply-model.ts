@@ -4,9 +4,9 @@ import type { Applys } from "../../generated/prisma/client.js";
    REQUEST
 ======================= */
 export type CreateApplyRequest = {
-    name_apply: string;
-    email: string;
-    no_hp: string;
+    nameApply: string;
+    emailApply: string;
+    phoneNumberApply: string;
     gender: string;
     domicile: string;
     resume: string;
@@ -16,15 +16,15 @@ export type CreateApplyRequest = {
    DATA RESPONSE (SINGLE)
 ======================= */
 export type ApplyData = {
-    id_apply: number;
-    name_apply: string;
-    email: string;
-    no_hp: string;
+    idApply: number;
+    nameApply: string;
+    emailApply: string;
+    phoneNumberApply: string;
     gender: string;
     domicile: string;
     resume: string;
-    created_at?: Date;
-    updated_at?: Date;
+    createdAt?: Date;
+    updatedAt?: Date;
 };
 
 /* =======================
@@ -37,15 +37,15 @@ export type ApiResponse<T> = {
 
 export function toApplyData(apply: Applys): ApplyData {
     return {
-        id_apply: apply.id,
-        name_apply: apply.name_apply,
-        email: apply.email,
-        no_hp: apply.no_hp,
+        idApply: apply.id,
+        nameApply: apply.name_apply,
+        emailApply: apply.email,
+        phoneNumberApply: apply.no_hp,
         gender: apply.gender,
         domicile: apply.domicile,
         resume: apply.resume,
-        created_at: apply.created_at,
-        updated_at: apply.updated_at,
+        createdAt: apply.created_at,
+        updatedAt: apply.updated_at,
     };
 }
 

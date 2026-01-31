@@ -2,7 +2,7 @@ import z from "zod";
 
 export class carrerValidation {
     static readonly CREATE = z.object({
-    job_date: z
+    jobDate: z
       .any()
       .superRefine((val, ctx) => {
         if (!val) {
@@ -23,20 +23,32 @@ export class carrerValidation {
       })
       .transform((val) => new Date(val)),
 
-    job_name: z.preprocess(
+    jobName: z.preprocess(
       (v) => (v == null ? '' : v),
       z
         .string()
         .min(1, 'Job Name must be at least 1 character long')
         .max(50, 'Job Name maximum 50 characters'),
     ),
+
+    categoryId: z.preprocess(
+      (v) => (v == null ? '' : v),
+      z
+        .number()
+        .min(1, 'Category Id must be at least 1 character long')
+        .max(3, 'Job Name maximum 3 characters'),
+    ),
 });
 
     static readonly UPDATE = z.object({
-        job_date: z.coerce.date().optional(),
-        job_name: z.preprocess(
+        jobDate: z.coerce.date().optional(),
+        jobName: z.preprocess(
             (v) => (v == null ? undefined : v),
             z.string().min(1, 'Job Name must be at least 1 character long').max(50, 'Job Name maximum 50 characters').optional(),
+        ),
+        categoryId: z.preprocess(
+            (v) => (v == null ? undefined : v),
+            z.number().min(1, 'id Category must be at least 1 character long').max(50, 'Job Name maximum 50 characters').optional(),
         ),
     });
 }

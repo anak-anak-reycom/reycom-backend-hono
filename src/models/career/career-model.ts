@@ -6,12 +6,12 @@ import type { Careers, Category } from "../../generated/prisma/client.js";
 
 export type CareerWithCategoryData = {
   id: number;
-  job_name: string;
-  job_date: Date;
+  jobName: string;
+  jobDate: Date;
   category?: {
-    id_category: number;
-    name_category: string;
-    job_type: string;
+    idCategory: number;
+    nameCategory: string;
+    jobType: string;
   };
 };
 
@@ -33,13 +33,13 @@ function toCareerWithCategory(
 ): CareerWithCategoryData {
   return {
     id: career.id,
-    job_name: career.job_name,
-    job_date: career.job_date,
+    jobName: career.job_name,
+    jobDate: career.job_date,
     category: career.category
       ? {
-          id_category: career.category.id,
-          name_category: career.category.name_category,
-          job_type: career.category.job_type,
+          idCategory: career.category.id,
+          nameCategory: career.category.name_category,
+          jobType: career.category.job_type,
         }
       : undefined,
   };

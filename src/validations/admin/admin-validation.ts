@@ -4,14 +4,14 @@ import { z } from 'zod';
 export class adminValidation {
 
   static readonly CREATE = z.object({
-    name_admin: z.preprocess(
+    nameAdmin: z.preprocess(
       (v) => (v == null ? '' : v),
       z.string()
         .min(3, 'Name Admin must be at least 3 characters long')
         .max(50, 'Nama Admin maximum 50 characters'),
     ),
 
-    email: z.preprocess(
+    emailAdmin: z.preprocess(
       (v) => (v == null ? '' : v),
       z.string()
         .min(1, 'Email must be at least 1 character long')
@@ -19,7 +19,7 @@ export class adminValidation {
         .max(100, 'Email maximum 100 characters'),
     ),
 
-    password: z.preprocess(
+    passwordAdmin: z.preprocess(
       (v) => (v == null ? '' : v),
       z.string()
         .min(6, 'Password must be at least 6 characters long')
@@ -28,7 +28,7 @@ export class adminValidation {
   }).strict();
 
   static readonly UPDATE = z.object({
-    name_admin: z.preprocess(
+    nameAdmin: z.preprocess(
       (v) => (v == null ? undefined : v),
       z.string()
         .min(3, 'Name Admin must be at least 3 characters long')
@@ -36,7 +36,7 @@ export class adminValidation {
         .optional(),
     ),
 
-    email: z.preprocess(
+    emailAdmin: z.preprocess(
       (v) => (v == null ? undefined : v),
       z.string()
         .email('Email format is invalid')
@@ -44,7 +44,7 @@ export class adminValidation {
         .optional(),
     ),
 
-    password: z.preprocess(
+    passwordAdmin: z.preprocess(
       (v) => (v == null ? undefined : v),
       z.string()
         .min(6, 'Password must be at least 6 characters long')
@@ -54,14 +54,14 @@ export class adminValidation {
   }).strict();
 
   static readonly LOGIN = z.object({
-    name_admin: z.preprocess(
+    nameAdmin: z.preprocess(
       (v) => (v == null ? '' : v),
       z.string()
         .min(3, 'Name Admin must be at least 3 characters long')
         .max(50, 'Name Admin maximum 50 characters'),
     ),
 
-    password: z.preprocess(
+    passwordAdmin: z.preprocess(
       (v) => (v == null ? '' : v),
       z.string()
         .min(6, 'Password must be at least 6 characters long')

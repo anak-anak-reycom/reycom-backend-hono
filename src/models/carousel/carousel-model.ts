@@ -5,10 +5,10 @@ import type { NewsCarousel } from "../../generated/prisma/client.js";
 ======================= */
 export type CarouselData = {
   id: number;
-  image_carousel: string;
-  image_carousel_public_id: string;
-  created_at: Date;
-  updated_at: Date;
+  imageCarousel: string;
+  imageCarouselPublicId: string;
+  createdAt: Date;
+  updatedAt: Date;
 };
 
 /* =======================
@@ -25,10 +25,10 @@ export type ApiResponse<T> = {
 export function toCarouselData(carousel: NewsCarousel): CarouselData {
   return {
     id: carousel.id,
-    image_carousel: carousel.image_url,
-    image_carousel_public_id: carousel.public_id,
-    created_at: carousel.createdAt,
-    updated_at: carousel.updatedAt,
+    imageCarousel: carousel.image_url,
+    imageCarouselPublicId: carousel.public_id,
+    createdAt: carousel.createdAt,
+    updatedAt: carousel.updatedAt,
   };
 }
 
@@ -44,3 +44,14 @@ export function toAllCarouselResponse(
     data: carousels.map(toCarouselData),
   };
 }
+
+export function toCarouselResponse(
+  carousel: NewsCarousel,
+  message: string,
+): ApiResponse<CarouselData> {
+  return {
+    message,
+    data: toCarouselData(carousel),
+  };
+}
+

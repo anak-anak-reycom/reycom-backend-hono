@@ -33,7 +33,7 @@ export class CareerRepository {
     });
   }
 
-  static findById(
+  static findCareerById(
     prisma: PrismaClient,
     id: number,
   ) {
@@ -45,7 +45,7 @@ export class CareerRepository {
     });
   }
 
-  static updateById(
+  static updateCareerById(
     prisma: PrismaClient,
     id: number,
     data: Prisma.CareersUpdateInput,

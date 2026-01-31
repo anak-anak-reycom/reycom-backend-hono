@@ -2,6 +2,7 @@ import type { PrismaClient } from "../../generated/prisma/client.js";
 import { uploadImageService } from "../../upload/upload-service.js";
 import { NewsRepository } from "../../repositories/news/news-repository.js";
 import { CarouselRepository } from "../../repositories/carousel/newsCarousel-repository.js";
+import { HTTPException } from 'hono/http-exception';
 
 export class CarouselNewsService {
 
@@ -12,6 +13,23 @@ export class CarouselNewsService {
     prisma: PrismaClient
   ) {
     return CarouselRepository.getAllCarousel(prisma)
+  }
+
+  static async getCarouselById(
+    prisma: PrismaClient,
+    id: number,
+  ) {
+    const carousel = await prisma.newsCarousel.findUnique({
+      where: { id },
+    });
+
+    if (!carousel) {
+      throw new HTTPException(404, {
+        message: 'Carousel not found',
+      });
+    }
+
+    return carousel;
   }
   
 
