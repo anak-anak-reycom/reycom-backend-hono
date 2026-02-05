@@ -34,7 +34,15 @@ CountryController.get(
   }),
   async (c) => {
     const prisma = c.get('prisma');  
-    const response = await CountryService.getAllCountries(prisma)
+
+    const page = Number(c.req.query('page') ?? 1)
+    const limitRaw = Number(c.req.query('limit') ?? 10)
+    const limit = Math.min(limitRaw, 100)
+    const response = await CountryService.getAllCountries(
+      prisma,
+      page,
+      limit
+    )
     return c.json(response, 200);
   }
 );

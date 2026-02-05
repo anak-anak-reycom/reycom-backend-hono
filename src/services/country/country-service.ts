@@ -5,6 +5,7 @@ import {
     type CountryData,
     type ApiResponse,
     toCountryResponse,
+    toCountryData,
     toModelListResponse,
 } from '../../models/country/country-model.js';
 
@@ -24,10 +25,32 @@ export class CountryService {
 
     static async getAllCountries(
         prisma: PrismaClient,
-    ): Promise<ApiResponse<CountryData[]>> {
-        const countries = await CountryRepository.getAllCountries(prisma);
-        return toModelListResponse(countries, "Countries retrieved successfully");
-    }
+        page: number,
+        limit: number
+        ) {
+
+        const skip = (page - 1) * limit
+
+        const [countries, total] = await Promise.all([
+            prisma.country.findMany({
+            skip,
+            take: limit,
+            include: {
+                companies: true
+            }
+            }),
+            prisma.country.count()
+        ])
+
+        return toModelListResponse(
+            countries,
+            "Countries retrieved successfully",
+            toCountryData, 
+            page,
+            limit,
+            total
+        )
+        }
 
     static async getCountryById(
         prisma: PrismaClient,
@@ -70,6 +93,7 @@ export class CountryService {
         }
         await CountryRepository.deleteCountryById(prisma, id);
         return {
+            success: true,
             message: "Country deleted successfully",
             data: null,
         };

@@ -26,6 +26,25 @@ export class CompanyRepository {
         })
     }
 
+    static getCompaniesPaginated(
+        prisma: PrismaClient,
+        skip: number,
+        take: number
+        ) {
+         return prisma.company.findMany({
+            skip,
+            take,
+            include: {
+                country: true,
+                branches: true
+            }
+        })
+    }
+
+    static countCompanies(prisma: PrismaClient) {
+        return prisma.company.count()
+        }
+
     static findCompanyById(
         prisma: PrismaClient,
         id: Number

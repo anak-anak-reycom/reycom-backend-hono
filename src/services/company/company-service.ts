@@ -4,6 +4,7 @@ import {
   type CreateCompanyRequest,
   type CompanyData,
   type ApiResponse,
+  type PaginationMeta,
   toCompanyResponse,
   toCompanyData,
   toModelListResponse,
@@ -43,18 +44,32 @@ export class CompanyService {
   // ===============================
   // GET ALL COMPANIES
   // ===============================
-  static async getAllCompanies(
-    prisma: PrismaClient
-  ): Promise<ApiResponse<CompanyData[]>> {
+static async getAllCompanies(
+  prisma: PrismaClient,
+  page: number,
+  limit: number
+) {
 
-    const companies = await CompanyRepository.getAllCompanies(prisma);
+  const skip = (page - 1) * limit
 
-    return toModelListResponse(
-      companies,
-      'Companies retrieved successfully',
-      toCompanyData
-    );
-  }
+  const [companies, total] = await Promise.all([
+    prisma.company.findMany({
+      skip,
+      take: limit,
+      include: { country: true, branches: true }
+    }),
+    prisma.company.count()
+  ])
+
+  return toModelListResponse(
+    companies,
+    'Companies retrieved successfully',
+    toCompanyData,
+    page,
+    limit,
+    total
+  )
+}
 
   // ===============================
   // GET COMPANY BY ID

@@ -1,14 +1,42 @@
 // =====================================
 // API RESPONSE GENERIC
 // =====================================
-export interface ApiResponse<T> {
-  success: boolean;
-  message: string;
-  data: T;
+export interface ApiResponse<T, M = unknown> {
+  success: boolean
+  message: string
+  data: T
+  meta?: M
 }
 
 // =====================================
-// BRANCH DTO
+// PAGINATION META
+// =====================================
+export interface PaginationMeta {
+  page: number
+  limit: number
+  total: number
+  totalPages: number
+}
+
+// =====================================
+// META BUILDER
+// =====================================
+export function buildPaginationMeta(
+  page: number,
+  limit: number,
+  total: number
+): PaginationMeta {
+  return {
+    page,
+    limit,
+    total,
+    totalPages: Math.ceil(total / limit),
+  }
+}
+
+
+// =====================================
+// DTO
 // =====================================
 export interface CreateBranchCompanyRequest {
   nameBranch: string;
@@ -21,18 +49,12 @@ export interface BranchCompanyData {
   updatedAt: Date;
 }
 
-// =====================================
-// COMPANY DTO (REQUEST)
-// =====================================
 export type CreateCompanyRequest = {
   name_company: string;
   countryId?: number;
   branches?: CreateBranchCompanyRequest[];
 }
 
-// =====================================
-// COMPANY DTO (RESPONSE DATA)
-// =====================================
 export interface CompanyData {
   id: number;
   nameCompany: string;
@@ -51,7 +73,7 @@ export interface CompanyData {
 }
 
 // =====================================
-// MAPPER: BRANCH ➜ RESPONSE
+// MAPPER
 // =====================================
 export function toBranchData(branch: any): BranchCompanyData {
   return {
@@ -62,9 +84,6 @@ export function toBranchData(branch: any): BranchCompanyData {
   };
 }
 
-// =====================================
-// MAPPER: COMPANY ➜ RESPONSE
-// =====================================
 export function toCompanyData(company: any): CompanyData {
   return {
     id: company.id,
@@ -85,30 +104,38 @@ export function toCompanyData(company: any): CompanyData {
 }
 
 // =====================================
-// RESPONSE: SINGLE COMPANY
+// RESPONSE
 // =====================================
 export function toCompanyResponse(
   company: any,
-  message: string
+  message: string,
+  meta?: Record<string, any>
 ): ApiResponse<CompanyData> {
   return {
     success: true,
     message,
     data: toCompanyData(company),
+    meta
   };
 }
 
-// =====================================
-// RESPONSE: LIST GENERIC
-// =====================================
 export function toModelListResponse<T, R>(
   models: T[],
   message: string,
-  mapper: (item: T) => R
-): ApiResponse<R[]> {
+  mapper: (item: T) => R,
+  page: number,
+  limit: number,
+  total: number
+): ApiResponse<R[], PaginationMeta> {
   return {
     success: true,
     message,
     data: models.map(mapper),
-  };
+    meta: {
+      page,
+      limit,
+      total,
+      totalPages: Math.ceil(total / limit)
+    }
+  }
 }

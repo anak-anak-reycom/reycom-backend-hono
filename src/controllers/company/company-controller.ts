@@ -14,7 +14,17 @@ export const CompanyController = new Hono<ContextWithPrisma>();
 // ===============================
 CompanyController.get('/company', withPrisma, async (c) => {
     const prisma = c.get('prisma')
-    const response = await CompanyService.getAllCompanies(prisma)
+
+    const page = Number(c.req.query('page') ?? 1)
+    const limitRaw = Number(c.req.query('limit') ?? 10)
+    const limit = Math.min(limitRaw, 100)
+
+    const response = await CompanyService.getAllCompanies(
+        prisma,
+        page,
+        limit
+    )
+
     return c.json(response, 200)
 })
 

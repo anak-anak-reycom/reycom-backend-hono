@@ -27,6 +27,28 @@ export class CountryRepository {
         });
     }
 
+    static getCountryPaginated(
+        prisma: PrismaClient,
+        skip: number,
+        take: number
+    ) {
+        return prisma.country.findMany({
+            skip,
+            take,
+            include: {
+                companies: {
+                    include: {
+                        branches: true
+                    }
+                }
+            }
+        })
+    }
+
+    static countCountries(prisma: PrismaClient) {
+        return prisma.company.count()
+    }
+
     static findCountryById(
         prisma: PrismaClient,
         id: Number
