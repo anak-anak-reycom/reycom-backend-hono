@@ -13,14 +13,18 @@ import { VideoController } from './controllers/videos/video-controller.js';
 import { CompanyController } from './controllers/company/company-controller.js';
 import { CountryController } from './controllers/country/country-controller.js';
 import { corsMiddleware } from './helpers/cors.js';
+import { swaggerUI } from '@hono/swagger-ui'
+import { openApiDoc } from './ui/swagger.js';
 
+// app
 const app = new Hono();
 
+// Serve the OpenAPI document
+app.get('/doc', (c) => c.json(openApiDoc))
 
+// Use the middleware to serve Swagger UI at /ui
+app.get('/', swaggerUI({ url: '/doc' }))
 app.route('/', corsMiddleware);
-
-// ROOT
-app.get('/', (c) => c.text('Hello Hono!'));
 
 // ROUTE
 app.route('/', AdminController);
