@@ -1,5 +1,6 @@
 import type { Prisma, PrismaClient } from "../../generated/prisma/client.js";
 import { applyValidation } from "../../validations/apply/apply-validation.js";
+import type { CreateApplyRequest } from "../../models/apply/apply-model.js";
 
 export class ApplyRepository {
 
@@ -13,10 +14,19 @@ export class ApplyRepository {
     } 
     
     static async createApplication(
-        PrismaClient : PrismaClient,
-        data: Prisma.ApplysCreateInput
+        prisma: PrismaClient,
+        data: CreateApplyRequest
     ) {
-        return PrismaClient.applys.create({ data });
+        const payload: Prisma.ApplysCreateInput = {
+            name_apply: data.nameApply,
+            email: data.emailApply,
+            no_hp: data.phoneNumberApply,
+            gender: data.gender,
+            domicile: data.domicile,
+            resume: data.resume,
+        };
+
+        return prisma.applys.create({ data: payload });
     }
     
     static async findApplicationByName(

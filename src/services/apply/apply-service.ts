@@ -23,7 +23,7 @@ export class ApplyService {
     // Cek duplicate name
     const total = await ApplyRepository.countByNameApplication(
       prisma,
-      request.name_apply,
+      request.nameApply,
     );
 
     if (total !== 0) {
