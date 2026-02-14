@@ -52,7 +52,7 @@ static async createNews(
 // ===============================
 static async getNewsById(prisma: PrismaClient, id: number) {
   const news = await prisma.news.findUnique({
-    where: { id },
+    where: {id},
     include: { carousels: true },
   });
   if (!news) {

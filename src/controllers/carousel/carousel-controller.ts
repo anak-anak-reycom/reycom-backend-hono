@@ -7,18 +7,30 @@ import { toAllCarouselResponse, toCarouselResponse } from '../../models/carousel
 import { HTTPException } from 'hono/http-exception';
 import { Prisma } from '../../generated/prisma/client.js';
 
+import { redis, ONE_DAY } from '../../lib/redis.js';
+
 export const CarouselController = new Hono<ContextWithPrisma>();
 
-CarouselController.get('/news/carousel', withPrisma, async (c) => {
+CarouselController.get('/carousel', withPrisma, async (c) => {
+    const cacheKey = "carousel:all"
+    const cachedData = await redis.get(cacheKey)
+
+    if (cachedData) {
+      console.log("from redis")
+      c.header("x-cache", "HIT")
+      return c.json(cachedData, 200)
+    }
     const prisma = c.get('prisma');
         const response = await CarouselNewsService.getAllCarousel(prisma);
-        return c.json(toAllCarouselResponse(
-            response,
-            "Get All Carousel Successfully"
-        ));
+
+        console.log("from database")
+        c.header("x-header", "MISS")
+
+        await redis.set(cacheKey, response, {ex: ONE_DAY})
+        return c.json(response, 200)
 })  
 
-CarouselController.get('/news/carousel/:id', withPrisma, async (c) => {
+CarouselController.get('/carousel/:id', withPrisma, async (c) => {
     const prisma = c.get('prisma');
     const id = Number(c.req.param("id"))
         const response = await CarouselNewsService.getCarouselById(prisma, id);
@@ -29,7 +41,7 @@ CarouselController.get('/news/carousel/:id', withPrisma, async (c) => {
 })  
 
 CarouselController.post(
-  '/news/carousel',
+  '/carousel',
   withPrisma,
   async (c) => {
     const prisma = c.get('prisma');
@@ -77,7 +89,7 @@ CarouselController.post(
 );
 
 CarouselController.patch(
-  '/news/carousel/:id',
+  '/carousel/:id',
   authAdminMiddleware,
   withPrisma,
   async (c) => {
@@ -102,7 +114,7 @@ CarouselController.patch(
 )
 
 CarouselController.delete(
-  '/news/carousel/:id',
+  '/carousel/:id',
   authAdminMiddleware,
   withPrisma,
   async (c) => {

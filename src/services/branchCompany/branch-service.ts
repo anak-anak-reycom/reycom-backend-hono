@@ -49,7 +49,12 @@ static async createBranch(
     prisma: PrismaClient
  ) {
     const branches = await BranchRepository.getAllBranches(prisma)
-    return toBranchListResponse(branches, 'Branches retrieved successfully')
+    
+    const page = 1;
+    const limit = branches.length;
+    const total = branches.length;
+
+    return toBranchListResponse(branches, 'Branches retrieved successfully', page, limit, total)
  }
 
 // ===============================

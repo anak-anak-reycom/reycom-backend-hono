@@ -1,10 +1,17 @@
+import  {
+ type PaginationMeta,
+   buildPaginationMeta
+} from "../../types/pagination.js"
+
+
 // =====================================
 // API RESPONSE GENERIC
 // =====================================
-export interface ApiResponse<T> {
+export interface ApiResponse<T, M = unknown> {
   success: boolean;
   message: string;
   data: T;
+  meta?: M
 }
 
 // =====================================
@@ -104,11 +111,15 @@ export function toBranchResponse(
 
 export function toBranchListResponse(
   branches: BranchCompany[],
-  message: string
-): ApiResponse<BranchCompanyData[]> {
+  message: string,
+  page: number,
+  limit: number,
+  total: number
+): ApiResponse<BranchCompanyData[], PaginationMeta> {
   return {
     success: true,
     message,
     data: branches.map(toBranchCompanyData),
+    meta: buildPaginationMeta(page, limit, total)
   };
 }

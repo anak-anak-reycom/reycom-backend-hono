@@ -3,6 +3,8 @@ import { uploadImageService } from "../../upload/upload-service.js";
 import { NewsRepository } from "../../repositories/news/news-repository.js";
 import { CarouselRepository } from "../../repositories/carousel/newsCarousel-repository.js";
 import { HTTPException } from 'hono/http-exception';
+import type { ApiResponse } from "../../models/admin/admin-model.js";
+import { toAllCarouselResponse, type CarouselData } from "../../models/carousel/carousel-model.js";
 
 export class CarouselNewsService {
 
@@ -11,8 +13,15 @@ export class CarouselNewsService {
   // =====================
   static async getAllCarousel(
     prisma: PrismaClient
-  ) {
-    return CarouselRepository.getAllCarousel(prisma)
+  ): Promise<ApiResponse<CarouselData[]>>{
+    
+    const carousel = await CarouselRepository.getAllCarousel(prisma)
+
+    const page = 1;
+    const limit = carousel.length
+    const total = carousel.length
+
+    return toAllCarouselResponse(carousel, "Get all carousel successfully", page, limit, total)
   }
 
   static async getCarouselById(

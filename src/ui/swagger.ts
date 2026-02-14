@@ -31,6 +31,7 @@ export const openApiDoc = {
     { name: 'Career', description: 'Career APIs' },
     { name: 'Category', description: 'Category APIs' },
     { name: 'News', description: 'News APIs' },
+    { name: 'Carousel', description: "Carousel APIs"},
     { name: 'Videos', description: 'Videos APIs' },
     { name: 'Country', description: 'Country APIs' },
     { name: 'Company', description: 'Company APIs' },
@@ -166,6 +167,9 @@ export const openApiDoc = {
 
     '/news': crud('News', 'news'),
     '/news/{id}': crudById('News', 'news'),
+
+    '/carousel' : crud ('Carousel', 'carousel'),
+    '/carousel/{id}' : crudById('Carousel', 'carousel'),
 
     '/videos': crud('Videos', 'video'),
     '/videos/{id}': crudById('Videos', 'video'),

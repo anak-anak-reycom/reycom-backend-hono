@@ -18,9 +18,11 @@ export type CarouselData = {
 /* =======================
    API RESPONSE WRAPPER
 ======================= */
-export type ApiResponse<T> = {
+export type ApiResponse<T, M = unknown> = {
   message: string;
+  success: boolean
   data: T;
+  meta?: M
 };
 
 /* =======================
@@ -41,11 +43,16 @@ export function toCarouselData(carousel: NewsCarousel): CarouselData {
 ======================= */
 export function toAllCarouselResponse(
   carousels: NewsCarousel[],
-  message: string
-): ApiResponse<CarouselData[]> {
+  message: string,
+  page: number,
+  limit: number,
+  total: number
+): ApiResponse<CarouselData[], PaginationMeta> {
   return {
+    success: true,
     message,
     data: carousels.map(toCarouselData),
+    meta: buildPaginationMeta(page, limit, total)
   };
 }
 
@@ -54,6 +61,7 @@ export function toCarouselResponse(
   message: string,
 ): ApiResponse<CarouselData> {
   return {
+    success: true,
     message,
     data: toCarouselData(carousel),
   };

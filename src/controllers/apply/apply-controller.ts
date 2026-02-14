@@ -7,11 +7,28 @@ import { HTTPException } from 'hono/http-exception';
 import {safeJson} from '../../helpers/safeJson.js';
 import type { ContextWithPrisma } from '../../types/context.js';
 
+import { redis } from '../../lib/redis.js';
+import { ONE_DAY } from '../../lib/redis.js';
+
 export const ApplyController = new Hono<ContextWithPrisma>();
 
 ApplyController.get('/apply', withPrisma, async (c) => {
+  const cacheKey = "apply:all"
+  const cachedData = await redis.get(cacheKey)
+  
+  if (cachedData) {
+    console.log("From Redis")
+    c.header("x-cache", "HIT")
+     return c.json(cachedData, 200);
+  }
+
   const prisma = c.get('prisma');
   const response = await ApplyService.GetAllApplications(prisma);
+
+  console.log("from database");
+  c.header("x-cache", "MISS")
+
+  await redis.set(cacheKey, response, {ex: ONE_DAY})
   return c.json(response, 200);
 });
 
@@ -41,6 +58,7 @@ ApplyController.post('/apply', withPrisma, async (c) => {
   const validated = applyValidation.CREATE.parse(raw);
 
   const response = await ApplyService.CreateApplication(prisma, validated);
+  await redis.del("apply:all")
   return c.json(response, 201);
 });
 
@@ -67,6 +85,7 @@ ApplyController.patch('/apply/:id', authAdminMiddleware, withPrisma, async (c) =
     validated,
   );
 
+  await redis.del("apply:all")
   return c.json(response, 200);
 });
 
@@ -79,5 +98,6 @@ ApplyController.delete('/apply/:id', authAdminMiddleware, withPrisma, async (c) 
   }
 
   const response = await ApplyService.DeleteApplicationById(prisma, id);
+  await redis.del("apply:all")
   return c.json(response, 200);
 });

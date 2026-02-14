@@ -7,7 +7,8 @@ import { carrerValidation } from "../../validations/career/carrer-validation.js"
 import {safeJson} from '../../helpers/safeJson.js';
 
 // redis
-import { redis } from "../../lib/redis.js";
+import { redis, ONE_DAY } from "../../lib/redis.js";
+
 
 export const CareerController = new Hono<ContextWithPrisma>();
 
@@ -29,8 +30,6 @@ CareerController.post("/career", withPrisma, async (c) => {
 
 CareerController.get("/career", withPrisma, async (c) => {
   const cacheKey = "career:all";
-  const ONE_DAY = 60 * 60 * 24;
-
   const cachedData = await redis.get(cacheKey);
 
   if (cachedData) {

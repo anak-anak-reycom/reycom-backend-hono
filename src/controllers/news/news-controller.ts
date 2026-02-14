@@ -17,10 +17,19 @@ NewsController.get("/news", withPrisma, async (c) => {
 
 NewsController.get("/news/:id", withPrisma, async (c) => {
   const prisma = c.get("prisma");
-  const id_news = Number(c.req.param("id"));
+
+  const idParam = c.req.param("id");
+
+  if (!idParam || isNaN(Number(idParam))) {
+    return c.json({ message: "Invalid ID" }, 400);
+  }
+
+  const id_news = Number(idParam);
+
   const response = await NewsService.getNewsById(prisma, id_news);
   return c.json(response, 200);
 });
+
 
 NewsController.post(
   "/news",

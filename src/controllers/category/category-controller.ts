@@ -7,7 +7,7 @@ import {safeJson} from '../../helpers/safeJson.js';
 import type { ContextWithPrisma } from '../../types/context.js';
 
 // redis
-import { redis } from '../../lib/redis.js';
+import { redis, ONE_DAY } from '../../lib/redis.js';
 
 export const CategoryController = new Hono<ContextWithPrisma>();
 
@@ -18,13 +18,14 @@ CategoryController.post('/category', withPrisma, async (c) => {
   const validated = CategoryValidation.CREATE.parse(raw);
 
   const response = await CategoryService.CreateCategory(prisma, validated);
+
+  await redis.del("category:all")
   return c.json(response, 201);
 });
 
 CategoryController.get('/category', withPrisma, async (c) => {
   const prisma = c.get('prisma');
   const cacheKey = "category:all";
-  const ONE_DAY = 60 * 60 * 24;
 
   const cachedData = await redis.get(cacheKey);
   if (cachedData && typeof cachedData === 'string') {
@@ -71,6 +72,7 @@ CategoryController.patch('/category/:id', withPrisma, async (c) => {
     validated,
   );
 
+  await redis.del("category:all")
   return c.json(response, 200);
 });
 
@@ -83,5 +85,7 @@ CategoryController.delete('/category/:id', withPrisma, async (c) => {
   }
 
   const response = await CategoryService.DeleteCategoryById(prisma, id);
+
+  await redis.del("category:all")
   return c.json(response, 200);
 });

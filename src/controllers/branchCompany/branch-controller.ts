@@ -6,6 +6,8 @@ import type { ContextWithPrisma } from '../../types/context.js'
 import { BranchService } from '../../services/branchCompany/branch-service.js'
 import { BranchValidation } from '../../validations/branchCompany/branch-validation.js'
 
+import {ONE_DAY, redis} from "../../lib/redis.js"
+
 export const BranchController = new Hono<ContextWithPrisma>()
 
 BranchController.post('/branch', withPrisma, async (c) => {
@@ -24,14 +26,27 @@ BranchController.post('/branch', withPrisma, async (c) => {
     company: { connect: { id: validated.companyId } }
   })
 
+  await redis.del("branch:all")
   return c.json(response, 201)
 })
 
 BranchController.get('/branch', withPrisma, async (c) => {
-  const prisma = c.get('prisma')
+  const cacheKey = "branch:all"
+  const cachedData = await redis.get("branch:all")
 
+  if (cachedData) {
+    console.log("from redis")
+    c.header("x-cache" , "HIT")
+    return c.json(cachedData, 200)
+  }
+
+  const prisma = c.get('prisma')
   const response = await BranchService.getAllBranches(prisma)
 
+  console.log("from database")
+  c.header("x-cache", "MISS")
+
+  await redis.set(cacheKey, response, {ex: ONE_DAY})
   return c.json(response, 200)
 })
 
@@ -84,6 +99,7 @@ BranchController.patch('/branch/:id', withPrisma, async (c) => {
     prismaData
   )
 
+  await redis.del("branch:all")
   return c.json(response, 200)
 })
 
@@ -102,5 +118,6 @@ BranchController.delete('/branch/:id', withPrisma, async (c) => {
 
   const response = await BranchService.deleteBranchById(prisma, id)
 
+  await redis.del("branch:all")
   return c.json(response, 200)
 })
