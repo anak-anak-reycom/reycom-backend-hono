@@ -35,6 +35,9 @@ model Careers {
   id         Int       @id @default(autoincrement())
   job_name   String
   job_date   DateTime  @default(now())
+  description String?
+  responbilities String?
+  requirement String?
   categoryId Int?
   created_at DateTime  @default(now())
   updated_at DateTime  @updatedAt
@@ -131,6 +134,7 @@ model BranchCompany {
   companyId      Int
   name_branch    String   
   street_address String?
+  link_map        String?
   phone          String?
   email          String?
   website        String?

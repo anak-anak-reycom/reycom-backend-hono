@@ -28,6 +28,7 @@ export interface CreateBranchRequest {
   companyId: number
   nameBranch: string
   streetAddress?: string
+  linkMap? : string
   phone?: string
   email?: string
   website?: string
@@ -36,19 +37,12 @@ export interface CreateBranchRequest {
 export interface UpdateBranchCompanyRequest {
   nameBranch?: string;
   streetAddress?: string;
+  linkMap?: string;
   phone?: string;
   email?: string;
   website?: string;
 }
 
-export interface CreateBranchRequest {
-  nameBranch: string;
-  streetAddress?: string;
-  company: { connect: { id: number } };
-  phone?: string;
-  email?: string;
-  website?: string;
-}
 
 
 // =====================================
@@ -60,6 +54,7 @@ export interface BranchCompanyData {
   companyId: number;
   nameBranch: string;
   streetAddress?: string | null;
+  linkMap?: String | null;
   phone?: string | null;
   email?: string | null;
   website?: string | null;
@@ -80,6 +75,7 @@ export function toBranchCompanyData(
     companyId: branch.companyId,
     nameBranch: branch.name_branch,          
     streetAddress: branch.street_address,
+    linkMap: branch.link_map,
     phone: branch.phone,
     email: branch.email,
     website: branch.website,

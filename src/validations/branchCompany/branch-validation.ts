@@ -11,12 +11,15 @@ export class BranchValidation {
       .min(1, "Name branch required")
       .max(50),
 
-    // ✅ support number & string number
     companyId: z.coerce.number()
       .int()
       .positive(),
 
     streetAddress: z.string()
+      .max(255)
+      .optional(),
+
+    linkMap :  z.string()
       .max(255)
       .optional(),
 
@@ -55,6 +58,11 @@ export class BranchValidation {
     streetAddress: z.string()
       .max(255)
       .optional(),
+
+      linkMap :  z.string()
+      .max(255)
+      .optional(),
+
 
     phone: z.string()
       .max(20)

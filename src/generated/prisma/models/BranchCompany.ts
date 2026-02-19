@@ -41,6 +41,7 @@ export type BranchCompanyMinAggregateOutputType = {
   companyId: number | null
   name_branch: string | null
   street_address: string | null
+  link_map: string | null
   phone: string | null
   email: string | null
   website: string | null
@@ -53,6 +54,7 @@ export type BranchCompanyMaxAggregateOutputType = {
   companyId: number | null
   name_branch: string | null
   street_address: string | null
+  link_map: string | null
   phone: string | null
   email: string | null
   website: string | null
@@ -65,6 +67,7 @@ export type BranchCompanyCountAggregateOutputType = {
   companyId: number
   name_branch: number
   street_address: number
+  link_map: number
   phone: number
   email: number
   website: number
@@ -89,6 +92,7 @@ export type BranchCompanyMinAggregateInputType = {
   companyId?: true
   name_branch?: true
   street_address?: true
+  link_map?: true
   phone?: true
   email?: true
   website?: true
@@ -101,6 +105,7 @@ export type BranchCompanyMaxAggregateInputType = {
   companyId?: true
   name_branch?: true
   street_address?: true
+  link_map?: true
   phone?: true
   email?: true
   website?: true
@@ -113,6 +118,7 @@ export type BranchCompanyCountAggregateInputType = {
   companyId?: true
   name_branch?: true
   street_address?: true
+  link_map?: true
   phone?: true
   email?: true
   website?: true
@@ -212,6 +218,7 @@ export type BranchCompanyGroupByOutputType = {
   companyId: number
   name_branch: string
   street_address: string | null
+  link_map: string | null
   phone: string | null
   email: string | null
   website: string | null
@@ -247,6 +254,7 @@ export type BranchCompanyWhereInput = {
   companyId?: Prisma.IntFilter<"BranchCompany"> | number
   name_branch?: Prisma.StringFilter<"BranchCompany"> | string
   street_address?: Prisma.StringNullableFilter<"BranchCompany"> | string | null
+  link_map?: Prisma.StringNullableFilter<"BranchCompany"> | string | null
   phone?: Prisma.StringNullableFilter<"BranchCompany"> | string | null
   email?: Prisma.StringNullableFilter<"BranchCompany"> | string | null
   website?: Prisma.StringNullableFilter<"BranchCompany"> | string | null
@@ -260,6 +268,7 @@ export type BranchCompanyOrderByWithRelationInput = {
   companyId?: Prisma.SortOrder
   name_branch?: Prisma.SortOrder
   street_address?: Prisma.SortOrderInput | Prisma.SortOrder
+  link_map?: Prisma.SortOrderInput | Prisma.SortOrder
   phone?: Prisma.SortOrderInput | Prisma.SortOrder
   email?: Prisma.SortOrderInput | Prisma.SortOrder
   website?: Prisma.SortOrderInput | Prisma.SortOrder
@@ -276,6 +285,7 @@ export type BranchCompanyWhereUniqueInput = Prisma.AtLeast<{
   companyId?: Prisma.IntFilter<"BranchCompany"> | number
   name_branch?: Prisma.StringFilter<"BranchCompany"> | string
   street_address?: Prisma.StringNullableFilter<"BranchCompany"> | string | null
+  link_map?: Prisma.StringNullableFilter<"BranchCompany"> | string | null
   phone?: Prisma.StringNullableFilter<"BranchCompany"> | string | null
   email?: Prisma.StringNullableFilter<"BranchCompany"> | string | null
   website?: Prisma.StringNullableFilter<"BranchCompany"> | string | null
@@ -289,6 +299,7 @@ export type BranchCompanyOrderByWithAggregationInput = {
   companyId?: Prisma.SortOrder
   name_branch?: Prisma.SortOrder
   street_address?: Prisma.SortOrderInput | Prisma.SortOrder
+  link_map?: Prisma.SortOrderInput | Prisma.SortOrder
   phone?: Prisma.SortOrderInput | Prisma.SortOrder
   email?: Prisma.SortOrderInput | Prisma.SortOrder
   website?: Prisma.SortOrderInput | Prisma.SortOrder
@@ -309,6 +320,7 @@ export type BranchCompanyScalarWhereWithAggregatesInput = {
   companyId?: Prisma.IntWithAggregatesFilter<"BranchCompany"> | number
   name_branch?: Prisma.StringWithAggregatesFilter<"BranchCompany"> | string
   street_address?: Prisma.StringNullableWithAggregatesFilter<"BranchCompany"> | string | null
+  link_map?: Prisma.StringNullableWithAggregatesFilter<"BranchCompany"> | string | null
   phone?: Prisma.StringNullableWithAggregatesFilter<"BranchCompany"> | string | null
   email?: Prisma.StringNullableWithAggregatesFilter<"BranchCompany"> | string | null
   website?: Prisma.StringNullableWithAggregatesFilter<"BranchCompany"> | string | null
@@ -319,6 +331,7 @@ export type BranchCompanyScalarWhereWithAggregatesInput = {
 export type BranchCompanyCreateInput = {
   name_branch: string
   street_address?: string | null
+  link_map?: string | null
   phone?: string | null
   email?: string | null
   website?: string | null
@@ -332,6 +345,7 @@ export type BranchCompanyUncheckedCreateInput = {
   companyId: number
   name_branch: string
   street_address?: string | null
+  link_map?: string | null
   phone?: string | null
   email?: string | null
   website?: string | null
@@ -342,6 +356,7 @@ export type BranchCompanyUncheckedCreateInput = {
 export type BranchCompanyUpdateInput = {
   name_branch?: Prisma.StringFieldUpdateOperationsInput | string
   street_address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  link_map?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   website?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -355,6 +370,7 @@ export type BranchCompanyUncheckedUpdateInput = {
   companyId?: Prisma.IntFieldUpdateOperationsInput | number
   name_branch?: Prisma.StringFieldUpdateOperationsInput | string
   street_address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  link_map?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   website?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -367,6 +383,7 @@ export type BranchCompanyCreateManyInput = {
   companyId: number
   name_branch: string
   street_address?: string | null
+  link_map?: string | null
   phone?: string | null
   email?: string | null
   website?: string | null
@@ -377,6 +394,7 @@ export type BranchCompanyCreateManyInput = {
 export type BranchCompanyUpdateManyMutationInput = {
   name_branch?: Prisma.StringFieldUpdateOperationsInput | string
   street_address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  link_map?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   website?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -389,6 +407,7 @@ export type BranchCompanyUncheckedUpdateManyInput = {
   companyId?: Prisma.IntFieldUpdateOperationsInput | number
   name_branch?: Prisma.StringFieldUpdateOperationsInput | string
   street_address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  link_map?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   website?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -411,6 +430,7 @@ export type BranchCompanyCountOrderByAggregateInput = {
   companyId?: Prisma.SortOrder
   name_branch?: Prisma.SortOrder
   street_address?: Prisma.SortOrder
+  link_map?: Prisma.SortOrder
   phone?: Prisma.SortOrder
   email?: Prisma.SortOrder
   website?: Prisma.SortOrder
@@ -428,6 +448,7 @@ export type BranchCompanyMaxOrderByAggregateInput = {
   companyId?: Prisma.SortOrder
   name_branch?: Prisma.SortOrder
   street_address?: Prisma.SortOrder
+  link_map?: Prisma.SortOrder
   phone?: Prisma.SortOrder
   email?: Prisma.SortOrder
   website?: Prisma.SortOrder
@@ -440,6 +461,7 @@ export type BranchCompanyMinOrderByAggregateInput = {
   companyId?: Prisma.SortOrder
   name_branch?: Prisma.SortOrder
   street_address?: Prisma.SortOrder
+  link_map?: Prisma.SortOrder
   phone?: Prisma.SortOrder
   email?: Prisma.SortOrder
   website?: Prisma.SortOrder
@@ -497,6 +519,7 @@ export type BranchCompanyUncheckedUpdateManyWithoutCompanyNestedInput = {
 export type BranchCompanyCreateWithoutCompanyInput = {
   name_branch: string
   street_address?: string | null
+  link_map?: string | null
   phone?: string | null
   email?: string | null
   website?: string | null
@@ -508,6 +531,7 @@ export type BranchCompanyUncheckedCreateWithoutCompanyInput = {
   id?: number
   name_branch: string
   street_address?: string | null
+  link_map?: string | null
   phone?: string | null
   email?: string | null
   website?: string | null
@@ -549,6 +573,7 @@ export type BranchCompanyScalarWhereInput = {
   companyId?: Prisma.IntFilter<"BranchCompany"> | number
   name_branch?: Prisma.StringFilter<"BranchCompany"> | string
   street_address?: Prisma.StringNullableFilter<"BranchCompany"> | string | null
+  link_map?: Prisma.StringNullableFilter<"BranchCompany"> | string | null
   phone?: Prisma.StringNullableFilter<"BranchCompany"> | string | null
   email?: Prisma.StringNullableFilter<"BranchCompany"> | string | null
   website?: Prisma.StringNullableFilter<"BranchCompany"> | string | null
@@ -560,6 +585,7 @@ export type BranchCompanyCreateManyCompanyInput = {
   id?: number
   name_branch: string
   street_address?: string | null
+  link_map?: string | null
   phone?: string | null
   email?: string | null
   website?: string | null
@@ -570,6 +596,7 @@ export type BranchCompanyCreateManyCompanyInput = {
 export type BranchCompanyUpdateWithoutCompanyInput = {
   name_branch?: Prisma.StringFieldUpdateOperationsInput | string
   street_address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  link_map?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   website?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -581,6 +608,7 @@ export type BranchCompanyUncheckedUpdateWithoutCompanyInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
   name_branch?: Prisma.StringFieldUpdateOperationsInput | string
   street_address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  link_map?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   website?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -592,6 +620,7 @@ export type BranchCompanyUncheckedUpdateManyWithoutCompanyInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
   name_branch?: Prisma.StringFieldUpdateOperationsInput | string
   street_address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  link_map?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   website?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -606,6 +635,7 @@ export type BranchCompanySelect<ExtArgs extends runtime.Types.Extensions.Interna
   companyId?: boolean
   name_branch?: boolean
   street_address?: boolean
+  link_map?: boolean
   phone?: boolean
   email?: boolean
   website?: boolean
@@ -619,6 +649,7 @@ export type BranchCompanySelectCreateManyAndReturn<ExtArgs extends runtime.Types
   companyId?: boolean
   name_branch?: boolean
   street_address?: boolean
+  link_map?: boolean
   phone?: boolean
   email?: boolean
   website?: boolean
@@ -632,6 +663,7 @@ export type BranchCompanySelectUpdateManyAndReturn<ExtArgs extends runtime.Types
   companyId?: boolean
   name_branch?: boolean
   street_address?: boolean
+  link_map?: boolean
   phone?: boolean
   email?: boolean
   website?: boolean
@@ -645,6 +677,7 @@ export type BranchCompanySelectScalar = {
   companyId?: boolean
   name_branch?: boolean
   street_address?: boolean
+  link_map?: boolean
   phone?: boolean
   email?: boolean
   website?: boolean
@@ -652,7 +685,7 @@ export type BranchCompanySelectScalar = {
   updatedAt?: boolean
 }
 
-export type BranchCompanyOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "companyId" | "name_branch" | "street_address" | "phone" | "email" | "website" | "createdAt" | "updatedAt", ExtArgs["result"]["branchCompany"]>
+export type BranchCompanyOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "companyId" | "name_branch" | "street_address" | "link_map" | "phone" | "email" | "website" | "createdAt" | "updatedAt", ExtArgs["result"]["branchCompany"]>
 export type BranchCompanyInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   company?: boolean | Prisma.CompanyDefaultArgs<ExtArgs>
 }
@@ -673,6 +706,7 @@ export type $BranchCompanyPayload<ExtArgs extends runtime.Types.Extensions.Inter
     companyId: number
     name_branch: string
     street_address: string | null
+    link_map: string | null
     phone: string | null
     email: string | null
     website: string | null
@@ -1106,6 +1140,7 @@ export interface BranchCompanyFieldRefs {
   readonly companyId: Prisma.FieldRef<"BranchCompany", 'Int'>
   readonly name_branch: Prisma.FieldRef<"BranchCompany", 'String'>
   readonly street_address: Prisma.FieldRef<"BranchCompany", 'String'>
+  readonly link_map: Prisma.FieldRef<"BranchCompany", 'String'>
   readonly phone: Prisma.FieldRef<"BranchCompany", 'String'>
   readonly email: Prisma.FieldRef<"BranchCompany", 'String'>
   readonly website: Prisma.FieldRef<"BranchCompany", 'String'>

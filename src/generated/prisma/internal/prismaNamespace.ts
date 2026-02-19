@@ -1295,6 +1295,9 @@ export const CareersScalarFieldEnum = {
   id: 'id',
   job_name: 'job_name',
   job_date: 'job_date',
+  description: 'description',
+  responbilities: 'responbilities',
+  requirement: 'requirement',
   categoryId: 'categoryId',
   created_at: 'created_at',
   updated_at: 'updated_at'
@@ -1397,6 +1400,7 @@ export const BranchCompanyScalarFieldEnum = {
   companyId: 'companyId',
   name_branch: 'name_branch',
   street_address: 'street_address',
+  link_map: 'link_map',
   phone: 'phone',
   email: 'email',
   website: 'website',

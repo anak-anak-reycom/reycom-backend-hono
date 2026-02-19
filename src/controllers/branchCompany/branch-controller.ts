@@ -20,10 +20,10 @@ BranchController.post('/branch', withPrisma, async (c) => {
     nameBranch: validated.nameBranch,
     companyId: validated.companyId,
     streetAddress: validated.streetAddress,
+    linkMap: validated.linkMap,
     phone: validated.phone,
     email: validated.email,
-    website: validated.website,
-    company: { connect: { id: validated.companyId } }
+    website: validated.website
   })
 
   await redis.del("branch:all")

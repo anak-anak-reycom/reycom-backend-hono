@@ -13,6 +13,9 @@ export type CareerWithCategoryData = {
   id: number;
   jobName: string;
   jobDate: Date;
+  jobDescription: string | null;
+  jobResponbilities: string | null;
+  jobRequirement: string | null;
   category?: {
     idCategory: number;
     nameCategory: string;
@@ -42,6 +45,9 @@ function toCareerWithCategory(
     id: career.id,
     jobName: career.job_name,
     jobDate: career.job_date,
+    jobDescription: career.requirement,
+    jobResponbilities: career.responbilities,
+    jobRequirement: career.requirement,
     category: career.category
       ? {
           idCategory: career.category.id,

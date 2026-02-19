@@ -40,6 +40,9 @@ export type CareersMinAggregateOutputType = {
   id: number | null
   job_name: string | null
   job_date: Date | null
+  description: string | null
+  responbilities: string | null
+  requirement: string | null
   categoryId: number | null
   created_at: Date | null
   updated_at: Date | null
@@ -49,6 +52,9 @@ export type CareersMaxAggregateOutputType = {
   id: number | null
   job_name: string | null
   job_date: Date | null
+  description: string | null
+  responbilities: string | null
+  requirement: string | null
   categoryId: number | null
   created_at: Date | null
   updated_at: Date | null
@@ -58,6 +64,9 @@ export type CareersCountAggregateOutputType = {
   id: number
   job_name: number
   job_date: number
+  description: number
+  responbilities: number
+  requirement: number
   categoryId: number
   created_at: number
   updated_at: number
@@ -79,6 +88,9 @@ export type CareersMinAggregateInputType = {
   id?: true
   job_name?: true
   job_date?: true
+  description?: true
+  responbilities?: true
+  requirement?: true
   categoryId?: true
   created_at?: true
   updated_at?: true
@@ -88,6 +100,9 @@ export type CareersMaxAggregateInputType = {
   id?: true
   job_name?: true
   job_date?: true
+  description?: true
+  responbilities?: true
+  requirement?: true
   categoryId?: true
   created_at?: true
   updated_at?: true
@@ -97,6 +112,9 @@ export type CareersCountAggregateInputType = {
   id?: true
   job_name?: true
   job_date?: true
+  description?: true
+  responbilities?: true
+  requirement?: true
   categoryId?: true
   created_at?: true
   updated_at?: true
@@ -193,6 +211,9 @@ export type CareersGroupByOutputType = {
   id: number
   job_name: string
   job_date: Date
+  description: string | null
+  responbilities: string | null
+  requirement: string | null
   categoryId: number | null
   created_at: Date
   updated_at: Date
@@ -225,6 +246,9 @@ export type CareersWhereInput = {
   id?: Prisma.IntFilter<"Careers"> | number
   job_name?: Prisma.StringFilter<"Careers"> | string
   job_date?: Prisma.DateTimeFilter<"Careers"> | Date | string
+  description?: Prisma.StringNullableFilter<"Careers"> | string | null
+  responbilities?: Prisma.StringNullableFilter<"Careers"> | string | null
+  requirement?: Prisma.StringNullableFilter<"Careers"> | string | null
   categoryId?: Prisma.IntNullableFilter<"Careers"> | number | null
   created_at?: Prisma.DateTimeFilter<"Careers"> | Date | string
   updated_at?: Prisma.DateTimeFilter<"Careers"> | Date | string
@@ -235,6 +259,9 @@ export type CareersOrderByWithRelationInput = {
   id?: Prisma.SortOrder
   job_name?: Prisma.SortOrder
   job_date?: Prisma.SortOrder
+  description?: Prisma.SortOrderInput | Prisma.SortOrder
+  responbilities?: Prisma.SortOrderInput | Prisma.SortOrder
+  requirement?: Prisma.SortOrderInput | Prisma.SortOrder
   categoryId?: Prisma.SortOrderInput | Prisma.SortOrder
   created_at?: Prisma.SortOrder
   updated_at?: Prisma.SortOrder
@@ -248,6 +275,9 @@ export type CareersWhereUniqueInput = Prisma.AtLeast<{
   NOT?: Prisma.CareersWhereInput | Prisma.CareersWhereInput[]
   job_name?: Prisma.StringFilter<"Careers"> | string
   job_date?: Prisma.DateTimeFilter<"Careers"> | Date | string
+  description?: Prisma.StringNullableFilter<"Careers"> | string | null
+  responbilities?: Prisma.StringNullableFilter<"Careers"> | string | null
+  requirement?: Prisma.StringNullableFilter<"Careers"> | string | null
   categoryId?: Prisma.IntNullableFilter<"Careers"> | number | null
   created_at?: Prisma.DateTimeFilter<"Careers"> | Date | string
   updated_at?: Prisma.DateTimeFilter<"Careers"> | Date | string
@@ -258,6 +288,9 @@ export type CareersOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
   job_name?: Prisma.SortOrder
   job_date?: Prisma.SortOrder
+  description?: Prisma.SortOrderInput | Prisma.SortOrder
+  responbilities?: Prisma.SortOrderInput | Prisma.SortOrder
+  requirement?: Prisma.SortOrderInput | Prisma.SortOrder
   categoryId?: Prisma.SortOrderInput | Prisma.SortOrder
   created_at?: Prisma.SortOrder
   updated_at?: Prisma.SortOrder
@@ -275,6 +308,9 @@ export type CareersScalarWhereWithAggregatesInput = {
   id?: Prisma.IntWithAggregatesFilter<"Careers"> | number
   job_name?: Prisma.StringWithAggregatesFilter<"Careers"> | string
   job_date?: Prisma.DateTimeWithAggregatesFilter<"Careers"> | Date | string
+  description?: Prisma.StringNullableWithAggregatesFilter<"Careers"> | string | null
+  responbilities?: Prisma.StringNullableWithAggregatesFilter<"Careers"> | string | null
+  requirement?: Prisma.StringNullableWithAggregatesFilter<"Careers"> | string | null
   categoryId?: Prisma.IntNullableWithAggregatesFilter<"Careers"> | number | null
   created_at?: Prisma.DateTimeWithAggregatesFilter<"Careers"> | Date | string
   updated_at?: Prisma.DateTimeWithAggregatesFilter<"Careers"> | Date | string
@@ -283,6 +319,9 @@ export type CareersScalarWhereWithAggregatesInput = {
 export type CareersCreateInput = {
   job_name: string
   job_date?: Date | string
+  description?: string | null
+  responbilities?: string | null
+  requirement?: string | null
   created_at?: Date | string
   updated_at?: Date | string
   category?: Prisma.CategoryCreateNestedOneWithoutCareersInput
@@ -292,6 +331,9 @@ export type CareersUncheckedCreateInput = {
   id?: number
   job_name: string
   job_date?: Date | string
+  description?: string | null
+  responbilities?: string | null
+  requirement?: string | null
   categoryId?: number | null
   created_at?: Date | string
   updated_at?: Date | string
@@ -300,6 +342,9 @@ export type CareersUncheckedCreateInput = {
 export type CareersUpdateInput = {
   job_name?: Prisma.StringFieldUpdateOperationsInput | string
   job_date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  responbilities?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  requirement?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   category?: Prisma.CategoryUpdateOneWithoutCareersNestedInput
@@ -309,6 +354,9 @@ export type CareersUncheckedUpdateInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
   job_name?: Prisma.StringFieldUpdateOperationsInput | string
   job_date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  responbilities?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  requirement?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   categoryId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -318,6 +366,9 @@ export type CareersCreateManyInput = {
   id?: number
   job_name: string
   job_date?: Date | string
+  description?: string | null
+  responbilities?: string | null
+  requirement?: string | null
   categoryId?: number | null
   created_at?: Date | string
   updated_at?: Date | string
@@ -326,6 +377,9 @@ export type CareersCreateManyInput = {
 export type CareersUpdateManyMutationInput = {
   job_name?: Prisma.StringFieldUpdateOperationsInput | string
   job_date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  responbilities?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  requirement?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -334,6 +388,9 @@ export type CareersUncheckedUpdateManyInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
   job_name?: Prisma.StringFieldUpdateOperationsInput | string
   job_date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  responbilities?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  requirement?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   categoryId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -353,6 +410,9 @@ export type CareersCountOrderByAggregateInput = {
   id?: Prisma.SortOrder
   job_name?: Prisma.SortOrder
   job_date?: Prisma.SortOrder
+  description?: Prisma.SortOrder
+  responbilities?: Prisma.SortOrder
+  requirement?: Prisma.SortOrder
   categoryId?: Prisma.SortOrder
   created_at?: Prisma.SortOrder
   updated_at?: Prisma.SortOrder
@@ -367,6 +427,9 @@ export type CareersMaxOrderByAggregateInput = {
   id?: Prisma.SortOrder
   job_name?: Prisma.SortOrder
   job_date?: Prisma.SortOrder
+  description?: Prisma.SortOrder
+  responbilities?: Prisma.SortOrder
+  requirement?: Prisma.SortOrder
   categoryId?: Prisma.SortOrder
   created_at?: Prisma.SortOrder
   updated_at?: Prisma.SortOrder
@@ -376,6 +439,9 @@ export type CareersMinOrderByAggregateInput = {
   id?: Prisma.SortOrder
   job_name?: Prisma.SortOrder
   job_date?: Prisma.SortOrder
+  description?: Prisma.SortOrder
+  responbilities?: Prisma.SortOrder
+  requirement?: Prisma.SortOrder
   categoryId?: Prisma.SortOrder
   created_at?: Prisma.SortOrder
   updated_at?: Prisma.SortOrder
@@ -439,6 +505,9 @@ export type NullableIntFieldUpdateOperationsInput = {
 export type CareersCreateWithoutCategoryInput = {
   job_name: string
   job_date?: Date | string
+  description?: string | null
+  responbilities?: string | null
+  requirement?: string | null
   created_at?: Date | string
   updated_at?: Date | string
 }
@@ -447,6 +516,9 @@ export type CareersUncheckedCreateWithoutCategoryInput = {
   id?: number
   job_name: string
   job_date?: Date | string
+  description?: string | null
+  responbilities?: string | null
+  requirement?: string | null
   created_at?: Date | string
   updated_at?: Date | string
 }
@@ -484,6 +556,9 @@ export type CareersScalarWhereInput = {
   id?: Prisma.IntFilter<"Careers"> | number
   job_name?: Prisma.StringFilter<"Careers"> | string
   job_date?: Prisma.DateTimeFilter<"Careers"> | Date | string
+  description?: Prisma.StringNullableFilter<"Careers"> | string | null
+  responbilities?: Prisma.StringNullableFilter<"Careers"> | string | null
+  requirement?: Prisma.StringNullableFilter<"Careers"> | string | null
   categoryId?: Prisma.IntNullableFilter<"Careers"> | number | null
   created_at?: Prisma.DateTimeFilter<"Careers"> | Date | string
   updated_at?: Prisma.DateTimeFilter<"Careers"> | Date | string
@@ -493,6 +568,9 @@ export type CareersCreateManyCategoryInput = {
   id?: number
   job_name: string
   job_date?: Date | string
+  description?: string | null
+  responbilities?: string | null
+  requirement?: string | null
   created_at?: Date | string
   updated_at?: Date | string
 }
@@ -500,6 +578,9 @@ export type CareersCreateManyCategoryInput = {
 export type CareersUpdateWithoutCategoryInput = {
   job_name?: Prisma.StringFieldUpdateOperationsInput | string
   job_date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  responbilities?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  requirement?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -508,6 +589,9 @@ export type CareersUncheckedUpdateWithoutCategoryInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
   job_name?: Prisma.StringFieldUpdateOperationsInput | string
   job_date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  responbilities?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  requirement?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -516,6 +600,9 @@ export type CareersUncheckedUpdateManyWithoutCategoryInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
   job_name?: Prisma.StringFieldUpdateOperationsInput | string
   job_date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  responbilities?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  requirement?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -526,6 +613,9 @@ export type CareersSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs 
   id?: boolean
   job_name?: boolean
   job_date?: boolean
+  description?: boolean
+  responbilities?: boolean
+  requirement?: boolean
   categoryId?: boolean
   created_at?: boolean
   updated_at?: boolean
@@ -536,6 +626,9 @@ export type CareersSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Exten
   id?: boolean
   job_name?: boolean
   job_date?: boolean
+  description?: boolean
+  responbilities?: boolean
+  requirement?: boolean
   categoryId?: boolean
   created_at?: boolean
   updated_at?: boolean
@@ -546,6 +639,9 @@ export type CareersSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Exten
   id?: boolean
   job_name?: boolean
   job_date?: boolean
+  description?: boolean
+  responbilities?: boolean
+  requirement?: boolean
   categoryId?: boolean
   created_at?: boolean
   updated_at?: boolean
@@ -556,12 +652,15 @@ export type CareersSelectScalar = {
   id?: boolean
   job_name?: boolean
   job_date?: boolean
+  description?: boolean
+  responbilities?: boolean
+  requirement?: boolean
   categoryId?: boolean
   created_at?: boolean
   updated_at?: boolean
 }
 
-export type CareersOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "job_name" | "job_date" | "categoryId" | "created_at" | "updated_at", ExtArgs["result"]["careers"]>
+export type CareersOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "job_name" | "job_date" | "description" | "responbilities" | "requirement" | "categoryId" | "created_at" | "updated_at", ExtArgs["result"]["careers"]>
 export type CareersInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   category?: boolean | Prisma.Careers$categoryArgs<ExtArgs>
 }
@@ -581,6 +680,9 @@ export type $CareersPayload<ExtArgs extends runtime.Types.Extensions.InternalArg
     id: number
     job_name: string
     job_date: Date
+    description: string | null
+    responbilities: string | null
+    requirement: string | null
     categoryId: number | null
     created_at: Date
     updated_at: Date
@@ -1011,6 +1113,9 @@ export interface CareersFieldRefs {
   readonly id: Prisma.FieldRef<"Careers", 'Int'>
   readonly job_name: Prisma.FieldRef<"Careers", 'String'>
   readonly job_date: Prisma.FieldRef<"Careers", 'DateTime'>
+  readonly description: Prisma.FieldRef<"Careers", 'String'>
+  readonly responbilities: Prisma.FieldRef<"Careers", 'String'>
+  readonly requirement: Prisma.FieldRef<"Careers", 'String'>
   readonly categoryId: Prisma.FieldRef<"Careers", 'Int'>
   readonly created_at: Prisma.FieldRef<"Careers", 'DateTime'>
   readonly updated_at: Prisma.FieldRef<"Careers", 'DateTime'>

@@ -1,75 +1,21 @@
 import { Hono } from 'hono';
-import { AdminController } from './controllers/admin/admin-controller.js';
-import { CareerController } from './controllers/career/career-controller.js';
-import { ApplyController } from './controllers/apply/apply-controller.js';
-import { HTTPException } from 'hono/http-exception';
-import { ZodError } from 'zod';
-import { formatZodIssues } from './helpers/errorResponse.js';
 import { serve } from '@hono/node-server';
-import { CategoryController } from './controllers/category/category-controller.js';
-import { NewsController } from './controllers/news/news-controller.js';
-import { CarouselController } from './controllers/carousel/carousel-controller.js';
-import { VideoController } from './controllers/videos/video-controller.js';
-import { CompanyController } from './controllers/company/company-controller.js';
-import { CountryController } from './controllers/country/country-controller.js';
-import { BranchController } from './controllers/branchCompany/branch-controller.js';
-import { corsMiddleware } from './helpers/cors.js';
-import { swaggerUI } from '@hono/swagger-ui'
+import { swaggerUI } from '@hono/swagger-ui';
+
 import { openApiDoc } from './ui/swagger.js';
+import { corsMiddleware } from './helpers/cors.js';
+import { errorHandler } from './helpers/errorHandler.js';
+import { Routes } from './routes/route.js';
 
-// app
 const app = new Hono();
+const publicRoutes = new Routes();
 
-// Serve the OpenAPI document
-app.get('/docs', (c) => c.json(openApiDoc))
+app.get('/docs', (c) => c.json(openApiDoc));
+app.get('/', swaggerUI({ url: '/docs' }));
 
-// Use the middleware to serve Swagger UI at /ui
-app.get('/', swaggerUI({ url: '/docs' }))
 app.route('/', corsMiddleware);
+app.route('/', publicRoutes.app);
 
-// ROUTE
-app.route('/', AdminController);
-app.route('/', CareerController);
-app.route('/', ApplyController);
-app.route('/', CategoryController);
-app.route('/', NewsController);
-app.route('/', CarouselController)
-app.route('/', VideoController);
-app.route('/', CompanyController);
-app.route('/', CountryController);
-app.route('/', BranchController);
-
-
-// ERROR HANDLER
-app.onError((err, c) => {
-
-
-  if (err instanceof ZodError) {
-    return c.json(
-      {
-        message: 'Validation error',
-        errors: formatZodIssues(err.issues),
-      },
-      400,
-    );
-  }
-
-  if (err instanceof HTTPException) {
-    return c.json(
-      {
-        message: err.message,
-      },
-      err.status,
-    );
-  }
-
-  console.error(err);
-  return c.json(
-    {
-      message: 'Internal Server Error',
-    },
-    500,
-  );
-});
+app.onError(errorHandler);
 
 serve({ fetch: app.fetch, port: 3000 });

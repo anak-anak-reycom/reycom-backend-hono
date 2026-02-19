@@ -31,6 +31,30 @@ export class carrerValidation {
         .max(50, 'Job Name maximum 50 characters'),
     ),
 
+    jobDescription: z.preprocess(
+      (v) => (v == null ? '' : v),
+      z
+        .string()
+        .min(1, 'Job Description must be at least 1 character long')
+        .max(200, 'Job Description maximum 200 characters'),
+    ),
+
+    jobResponbilities: z.preprocess(
+      (v) => (v == null ? '' : v),
+      z
+        .string()
+        .min(1, 'Job Responbilities must be at least 1 character long')
+        .max(200, 'Job Responbilities maximum 200 characters'),
+    ),
+    
+     jobRequirement: z.preprocess(
+      (v) => (v == null ? '' : v),
+      z
+        .string()
+        .min(1, 'Job Responbilities must be at least 1 character long')
+        .max(200, 'Job Responbilities maximum 200 characters'),
+    ),
+
     categoryId: z.preprocess(
       (v) => (v == null ? '' : v),
       z
@@ -46,6 +70,29 @@ export class carrerValidation {
             (v) => (v == null ? undefined : v),
             z.string().min(1, 'Job Name must be at least 1 character long').max(50, 'Job Name maximum 50 characters').optional(),
         ),
+         jobDescription: z.preprocess(
+        (v) => (v == null ? '' : v),
+        z
+          .string()
+          .min(1, 'Job Description must be at least 1 character long')
+          .max(200, 'Job Description maximum 200 characters').optional(),
+      ),
+
+      jobResponbilities: z.preprocess(
+        (v) => (v == null ? '' : v),
+        z
+          .string()
+          .min(1, 'Job Responbilities must be at least 1 character long')
+          .max(200, 'Job Responbilities maximum 200 characters').optional(),
+      ),
+      
+      jobRequirement: z.preprocess(
+        (v) => (v == null ? '' : v),
+        z
+          .string()
+          .min(1, 'Job Responbilities must be at least 1 character long')
+          .max(200, 'Job Responbilities maximum 200 characters').optional(),
+      ),
         categoryId: z.preprocess(
             (v) => (v == null ? undefined : v),
             z.number().min(1, 'id Category must be at least 1 character long').max(50, 'Job Name maximum 50 characters').optional(),

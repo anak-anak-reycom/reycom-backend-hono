@@ -33,6 +33,7 @@ static async createBranch(
   const branch = await BranchRepository.createBranch(prisma, {
     name_branch: request.nameBranch,
     street_address: request.streetAddress,
+    link_map: request.linkMap,
     phone: request.phone,
     email: request.email,
     website: request.website,
