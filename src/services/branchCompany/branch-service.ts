@@ -48,7 +48,7 @@ static async createBranch(
 // ===============================
  static async getAllBranches(
     prisma: PrismaClient
- ) {
+ ): Promise<ApiResponse<BranchCompanyData[]>>  {
     const branches = await BranchRepository.getAllBranches(prisma)
     
     const page = 1;

@@ -54,7 +54,7 @@ export interface BranchCompanyData {
   companyId: number;
   nameBranch: string;
   streetAddress?: string | null;
-  linkMap?: String | null;
+  linkMap?: string | null;   
   phone?: string | null;
   email?: string | null;
   website?: string | null;
