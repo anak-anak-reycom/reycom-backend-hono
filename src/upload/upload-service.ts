@@ -15,9 +15,7 @@ export async function uploadImageService(file: File) {
         { folder: "photos" },
         (error, result) => {
 
-          // =========================
-          // ERROR HANDLING
-          // =========================
+          // error handling
           if (error || !result) {
 
             if (error?.message?.includes("File size too large")) {

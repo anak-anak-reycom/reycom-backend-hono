@@ -12,14 +12,12 @@ if (!databaseUrl) {
   throw new Error('DATABASE_URL is not set');
 }
 
-// ✅ SINGLETON
 const adapter = new PrismaPg({
   connectionString: databaseUrl,
 });
 
 const prisma = new PrismaClient({ adapter });
 
-// ✅ TYPED MIDDLEWARE
 const withPrisma: MiddlewareHandler<ContextWithPrisma> = async (c, next) => {
   c.set('prisma', prisma);
   await next();

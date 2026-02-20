@@ -2,7 +2,7 @@
   "name": "my-app",
   "type": "module",
   "scripts": {
-     "dev": "bun run src/index.ts",
+    "dev": "bun run src/index.ts",
     "build": "tsc",
     "start": "bun run src/index.ts"
   },
@@ -16,6 +16,7 @@
     "cloudinary": "^2.8.0",
     "dotenv": "17.2.3",
     "hono": "4.9.12",
+    "hono-rate-limiter": "^0.5.3",
     "ioredis": "^5.9.2",
     "jsonwebtoken": "^9.0.3",
     "logger": "^0.0.1",

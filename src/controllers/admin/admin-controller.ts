@@ -1,4 +1,4 @@
-import { Hono } from 'hono';
+import { Hono, type Context, type Env, type Input } from 'hono';
 import withPrisma from '../../lib/prisma.js';
 import { AdminService } from '../../services/admin/admin-service.js';
 import { authAdminMiddleware } from '../../middlewares/middleware.js';
@@ -7,6 +7,8 @@ import { HTTPException } from 'hono/http-exception';
 import {safeJson} from '../../helpers/safeJson.js';
 
 import type { AppContext } from '../../types/context.js';
+import { loginLimiter } from '../../utils/rate-limited.js';
+import { rateLimiter, type Promisify } from 'hono-rate-limiter';
 
 export const AdminController = new Hono<AppContext>();
 
@@ -81,7 +83,7 @@ AdminController.patch('/admin/:id', authAdminMiddleware, withPrisma, async (c) =
   return c.json(response, 200);
 });
 
-AdminController.post('/admin/login', withPrisma, async (c) => {
+AdminController.post('/admin/login', loginLimiter, withPrisma, async (c) => {
   const prisma = c.get('prisma');
 
   const raw = await safeJson(c);
