@@ -2,81 +2,128 @@ import z from "zod"
 
 export class BranchValidation {
 
-  // ===============================
-  // CREATE
-  // ===============================
   static readonly CREATE = z.object({
 
-    nameBranch: z.string()
-      .min(1, "Name branch required")
-      .max(50),
+    nameBranch: z.preprocess(
+        (v) => (v == null ? '' : v),
+         z
+         .string()
+         .min(1, 'Job Name must be at least 1 character long')
+         .max(50, 'Job Name maximum 50 characters'),
+     ),
+     
+    companyId:  z.preprocess(
+        (v) => (v == null ? '' : v),
+         z
+         .coerce.number()
+         .min(1, 'Company Id must be at least 1 character long')
+         .max(3, 'Company Id maximum 3 characters'),
+     ),
 
-    companyId: z.coerce.number()
-      .int()
-      .positive(),
+    streetAddress: z.preprocess(
+          (v) => (v == null ? '' : v),
+          z
+          .string()
+          .min(1, 'Street Address must be at least 1 character long')
+          .max(50, 'Street Address maximum 50 characters'),
+      ).optional(),
 
-    streetAddress: z.string()
-      .max(255)
-      .optional(),
+    linkMap: z.preprocess(
+          (v) => (v == null ? '' : v),
+          z
+          .string()
+          .min(1, 'Link Map must be at least 1 character long')
+          .max(250, 'Link Map maximum 250 characters'),
+      ).optional(),
 
-    linkMap :  z.string()
-      .max(255)
-      .optional(),
+    phone: z.preprocess(
+          (v) => (v == null ? '' : v),
+          z
+          .string()
+          .min(1, 'Phone Number must be at least 1 character long')
+          .max(20, 'Phone Number maximum 20 characters'),
+      ).optional(),
 
-    phone: z.string()
-      .max(20)
-      .optional(),
+    email: z.preprocess(
+          (v) => (v == null ? '' : v),
+          z
+          .string()
+          .email()
+          .min(1, 'Email must be at least 1 character long')
+          .max(100, 'Email maximum 100 characters'),
+      ).optional(),
 
-    email: z.string()
-      .email()
-      .max(100)
-      .optional(),
-
-    website: z.string()
-      .url()
-      .max(100)
-      .optional(),
+    website: z.preprocess(
+          (v) => (v == null ? '' : v),
+          z
+          .string()
+          .email()
+          .min(1, 'Link Website be at least 1 character long')
+          .max(100, 'Link Website maximum 100 characters'),
+      ).optional(),
 
   }).strict()
 
 
-  // ===============================
-  // UPDATE
-  // ===============================
   static readonly UPDATE = z.object({
 
-    nameBranch: z.string()
-      .min(1)
-      .max(50)
-      .optional(),
+    nameBranch: z.preprocess(
+        (v) => (v == null ? '' : v),
+         z
+         .string()
+         .min(1, 'Job Name must be at least 1 character long')
+         .max(50, 'Job Name maximum 50 characters'),
+     ).optional(),
+     
+    companyId:  z.preprocess(
+        (v) => (v == null ? '' : v),
+         z
+         .coerce.number()
+         .min(1, 'Company Id must be at least 1 character long')
+         .max(3, 'Company Id maximum 3 characters'),
+     ).optional(),
 
-    companyId: z.coerce.number()
-      .int()
-      .positive()
-      .optional(),
+    streetAddress: z.preprocess(
+          (v) => (v == null ? '' : v),
+          z
+          .string()
+          .min(1, 'Street Address must be at least 1 character long')
+          .max(50, 'Street Address maximum 50 characters'),
+      ).optional(),
 
-    streetAddress: z.string()
-      .max(255)
-      .optional(),
+    linkMap: z.preprocess(
+          (v) => (v == null ? '' : v),
+          z
+          .string()
+          .min(1, 'Link Map must be at least 1 character long')
+          .max(250, 'Link Map maximum 250 characters'),
+      ).optional(),
 
-      linkMap :  z.string()
-      .max(255)
-      .optional(),
+    phone: z.preprocess(
+          (v) => (v == null ? '' : v),
+          z
+          .string()
+          .min(1, 'Phone Number must be at least 1 character long')
+          .max(20, 'Phone Number maximum 20 characters'),
+      ).optional(),
 
+    email: z.preprocess(
+          (v) => (v == null ? '' : v),
+          z
+          .string()
+          .email()
+          .min(1, 'Email must be at least 1 character long')
+          .max(100, 'Email maximum 100 characters'),
+      ).optional(),
 
-    phone: z.string()
-      .max(20)
-      .optional(),
-
-    email: z.string()
-      .email()
-      .max(100)
-      .optional(),
-
-    website: z.string()
-      .url()
-      .max(100)
-      .optional(),
+    website: z.preprocess(
+          (v) => (v == null ? '' : v),
+          z
+          .string()
+          .email()
+          .min(1, 'Link Website be at least 1 character long')
+          .max(100, 'Link Website maximum 100 characters'),
+      ).optional(),
 
   }).strict()
 
