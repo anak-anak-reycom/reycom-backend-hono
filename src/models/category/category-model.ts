@@ -8,11 +8,11 @@ import  {
    REQUEST
 ======================= */
 export type CreateCategoryRequest = {
-    name_category: string;
-    job_type: string;
+    nameCategory: string;
+    jobType: string;
     career?: Array<{
-        job_name: string;
-        job_date?: Date;
+        jobName: string;
+        jobDate?: Date;
     }>;
 };
 
@@ -22,17 +22,17 @@ export type CreateCategoryRequest = {
 
 export type CareerData = {
     id: number;
-    job_name: string;
-    job_date: Date;
+    jobName: string;
+    jobDate: Date;
 };
 
 export type CategoryData = {
-    id_category: number;
-    name_category: string;
-    job_type: string;
+    idCategory: number;
+    nameCategory: string;
+    jobType: string;
     careers?: CareerData[];   
-    created_at?: Date;
-    updated_at?: Date;
+    createdAt?: Date;
+    updatedAt?: Date;
 };
 
 /* =======================
@@ -52,8 +52,8 @@ export type ApiResponse<T, M = unknown> = {
 function toCareerData(career: Careers): CareerData {
     return {
         id: career.id,
-        job_name: career.job_name,
-        job_date: career.job_date,
+        jobName: career.job_name,
+        jobDate: career.job_date,
     };
 }
 
@@ -61,12 +61,12 @@ export function toCategoryData(
     category: Category & { careers?: Careers[] }
 ): CategoryData {
     return {
-        id_category: category.id,
-        name_category: category.name_category,
-        job_type: category.job_type,
+        idCategory: category.id,
+        nameCategory: category.name_category,
+        jobType: category.job_type,
         careers: category.careers?.map(toCareerData),
-        created_at: category.created_at,
-        updated_at: category.updated_at,
+        createdAt: category.created_at,
+        updatedAt: category.updated_at,
     };
 }
 
