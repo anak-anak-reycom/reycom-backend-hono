@@ -1,7 +1,8 @@
 import { HTTPException } from 'hono/http-exception';
-import type { PrismaClient } from '../../generated/prisma/client.js';
+import type { PrismaClient, Prisma } from '../../generated/prisma/client.js';
 import {
   type CreateCategoryRequest,
+  type UpdateCategoryRequest,
   type CategoryData,
   type ApiResponse,
   toCategoryResponse,
@@ -19,7 +20,7 @@ export class CategoryService {
   
     const existing = await CategoryRepository.countByNameCategory(
       prisma,
-      request.name_category,
+      request.nameCategory,
     );
 
     if (existing) {
@@ -35,11 +36,13 @@ export class CategoryService {
       ...(career && career.length > 0 && {
         careers: {
           create: career.map((c) => ({
-            job_name: c.job_name,
-            job_date: c.job_date,
+            job_name: c.jobName,
+            job_date: c.jobDate,
           })),
         },
       }),
+      name_category: '',
+      job_type: ''
     });
 
     return toCategoryResponse(category, 'Category created successfully');
@@ -80,13 +83,13 @@ export class CategoryService {
     return toCategoryResponse(category, 'Get category successfully');
   }
 
-  // ===============================
+// ===============================
   // UPDATE CATEGORY
   // ===============================
   static async UpdateCategoryById(
     prisma: PrismaClient,
     id: number,
-    request: Partial<CreateCategoryRequest>,
+    request: UpdateCategoryRequest,
   ): Promise<ApiResponse<CategoryData>> {
 
     const existing = await CategoryRepository.findCategoryById(prisma, id);
@@ -97,11 +100,31 @@ export class CategoryService {
       });
     }
 
+    // Convert camelCase to snake_case for Prisma input
+    const prismaInput: Prisma.CategoryUpdateInput = {};
+    
+    if (request.nameCategory !== undefined && request.nameCategory !== null) {
+      prismaInput.name_category = request.nameCategory;
+    }
+    
+    if (request.jobType !== undefined && request.jobType !== null) {
+      prismaInput.job_type = request.jobType;
+    }
+    
+    if (request.career && request.career.length > 0) {
+      prismaInput.careers = {
+        create: request.career.map((c) => ({
+          job_name: c.jobName,
+          job_date: c.jobDate,
+        })),
+      };
+    }
+
     // optional: prevent duplicate name on update
-    if (request.name_category) {
+    if (request.nameCategory) {
       const duplicate = await CategoryRepository.findCategoryByName(
         prisma,
-        request.name_category,
+        request.nameCategory,
       );
 
       if (duplicate && duplicate.id !== id) {
@@ -114,7 +137,7 @@ export class CategoryService {
     const updated = await CategoryRepository.updateCategoryById(
       prisma,
       id,
-      request,
+      prismaInput,
     );
 
     return toCategoryResponse(updated, 'Category updated successfully');

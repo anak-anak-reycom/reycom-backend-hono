@@ -57,7 +57,6 @@ export class BranchValidation {
           (v) => (v == null ? '' : v),
           z
           .string()
-          .email()
           .min(1, 'Link Website be at least 1 character long')
           .max(100, 'Link Website maximum 100 characters'),
       ).optional(),
@@ -71,8 +70,8 @@ export class BranchValidation {
         (v) => (v == null ? '' : v),
          z
          .string()
-         .min(1, 'Job Name must be at least 1 character long')
-         .max(50, 'Job Name maximum 50 characters'),
+         .min(1, 'Name Branch must be at least 1 character long')
+         .max(50, 'Name Branch maximum 50 characters'),
      ).optional(),
      
     companyId:  z.preprocess(

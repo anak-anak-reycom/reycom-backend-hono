@@ -450,50 +450,53 @@ export const openApiDoc = {
     },
 
     '/category': {
-      get: crud('Category', 'category'),
-      post: {
-        tags: ['Categories'],
-        summary: 'Create category',
-        security: [{ BearerAuth: [] }],
-        requestBody: {
-          required: true,
-          content: {
-            'application/json': {
-              schema: {
-                $ref: '#/components/schemas/BranchCreate',
-              },
-            },
+  get: crud('Category', 'category').get,
+  post: {
+    tags: ['Category'],
+    summary: 'Create category',
+    security: [{ BearerAuth: [] }],
+    requestBody: {
+      required: true,
+      content: {
+        'application/json': {
+          schema: {
+            $ref: '#/components/schemas/CategoryCreate',
           },
         },
-        responses: {
-          '201': { description: 'Branch created successfully' },
-          '400': { description: 'Validation error' },
-          '401': { description: 'Unauthorized' },
-        },
-      }
+      },
     },
-    '/category/{id}': {
-      get: crudById('Category', 'category'),
-      patch: {
-        tags: ['Categories'],
-        summary: 'Update category',
-        security: [{ BearerAuth: [] }],
-        requestBody: {
-          required: true,
-          content: {
-            'application/json': {
-              schema: {
-                $ref: '#/components/schemas/BranchUpdate',
-              },
-            },
+    responses: {
+      '201': { description: 'Category created successfully' },
+      '400': { description: 'Validation error' },
+      '401': { description: 'Unauthorized' },
+    },
+  },
+},
+
+'/category/{id}': {
+  get: crudById('Category', 'category').get,
+  patch: {
+    tags: ['Category'],
+    summary: 'Update category',
+    security: [{ BearerAuth: [] }],
+    parameters: [
+      { name: 'id', in: 'path', required: true, schema: { type: 'integer' } },
+    ],
+    requestBody: {
+      required: true,
+      content: {
+        'application/json': {
+          schema: {
+            $ref: '#/components/schemas/CategoryUpdate',
           },
         },
-        responses: {
-          '201': { description: 'Categories created successfully' },
-          '400': { description: 'Validation error' },
-          '401': { description: 'Unauthorized' },
-        },
-      }
+      },
+    },
+    responses: {
+      '200': { description: 'Category updated successfully' },
+    },
+  },
+    delete: crudById('Category', 'category').delete,
     },
 
     '/country': crud('Country', 'country'),

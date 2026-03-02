@@ -60,7 +60,7 @@ export class carrerValidation {
       z
         .number()
         .min(1, 'Category Id must be at least 1 character long')
-        .max(3, 'Job Name maximum 3 characters'),
+        .max(50, 'Category Id maximum 3 characters'),
     ),
 });
 

@@ -13,6 +13,7 @@ export const BranchController = new Hono<ContextWithPrisma>()
 BranchController.post('/branch', withPrisma, async (c) => {
   const prisma = c.get('prisma')
 
+  console.log(await c.req.text())
   const raw = await safeJson(c)
   const validated = BranchValidation.CREATE.parse(raw)
 
@@ -25,6 +26,8 @@ BranchController.post('/branch', withPrisma, async (c) => {
     email: validated.email,
     website: validated.website
   })
+
+  
 
   await redis.del("branch:all")
   return c.json(response, 201)

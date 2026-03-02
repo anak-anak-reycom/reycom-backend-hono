@@ -16,6 +16,15 @@ export type CreateCategoryRequest = {
     }>;
 };
 
+export type UpdateCategoryRequest = {
+    nameCategory?: string;
+    jobType?: string;
+    career?: Array<{
+        jobName: string;
+        jobDate?: Date;
+    }>;
+};
+
 /* =======================
    DATA RESPONSE
 ======================= */
